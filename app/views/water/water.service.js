@@ -38,7 +38,7 @@
     };
 
     this.getTc = function(number) {
-      return $http.get(`http://localhost:3000/tc${number}`)
+      return $http.get(`http://localhost:3000/${number}`)
             .then((response) => {
               return response.data;
             });

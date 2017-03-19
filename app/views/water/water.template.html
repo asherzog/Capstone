@@ -1,0 +1,25 @@
+<section class="container">
+  <button class="btn btn-success" ui-sref="home">
+    Home
+  </button>
+  <br>
+  <br>
+  <div id="table">
+    <table class="table table-responsive table-bordered table-striped">
+      <thead class="table-info">
+        <tr>
+          <th ng-repeat="(key,value) in $ctrl.same[0]">{{key}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="month in $ctrl.same" >
+          <td ng-repeat="(key, value) in month">
+            {{value}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</section>

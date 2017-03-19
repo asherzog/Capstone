@@ -1,0 +1,39 @@
+<section class="home">
+  <div class="text-center">
+    <div ng-repeat="system in $ctrl.systems">
+      <a ui-sref="water({water: system})">
+        <button type="button" class="btn btn-primary">
+          {{system}}
+        </button>
+      </a>
+    </div>
+    <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled">
+      +
+    </button>
+    <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText" >
+      {{$ctrl.btnText ? 'Edit' : 'Save'}}
+    </button>
+    <button class="btn btn-danger" ui-sref="graphs">
+      x
+    </button>
+  </div>
+  <div ng-repeat="rig in $ctrl.newRigs" id="table">
+    <table class="table table-sm table-responsive table-bordered table-striped">
+      <thead class="table-info">
+        <tr>
+          <th ng-repeat="key in $ctrl.keys" ng-hide="$first">{{key}}</th>
+        </tr>
+      </thead>
+      <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
+        <tr ng-repeat="well in rig.Wells" >
+          <td ng-repeat="(key, value) in well" ng-hide="$first">
+          <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
+          <p ng-if="!well.editing[key]" ng-click="$ctrl.options.disabled ? well.editing[key] = !well.editing[key] : ''">
+            {{value}}
+          </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

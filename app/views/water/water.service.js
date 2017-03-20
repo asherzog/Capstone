@@ -48,5 +48,12 @@
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 
+    this.getPdpWells = function(system) {
+      return $http.get(`http://localhost:3000/pdpwells/${system}`)
+        .then(response => {
+          return response.data;
+        });
+    };
+
   };
 }());

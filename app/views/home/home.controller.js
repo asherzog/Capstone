@@ -32,7 +32,6 @@
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
         vm.options = {
-          'ui-floating': true,
           disabled: false,
           connectWith: '.rig',
           scroll: true,
@@ -68,8 +67,6 @@
       }
     };
 
-
-
     function updateTable(e, ui) {
       vm.first = false;
       let rigArr = ui.item.sortable.droptargetModel;
@@ -82,6 +79,7 @@
           if (i > 0) {
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
+          HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
         }
         vm.newRigs[0].Wells = rigArr;
       } else {
@@ -90,6 +88,7 @@
           if (i > 0) {
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
+          HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
         }
         vm.newRigs[1].Wells = rigArr;
       }

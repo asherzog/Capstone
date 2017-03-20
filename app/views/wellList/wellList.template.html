@@ -1,15 +1,15 @@
 
   <div id="table" class="daily">
-    <h3>Daily Water Forecast</h3>
+    <h3>Wells in System</h3>
     <table class="table table-responsive table-bordered table-striped table-scroll">
       <thead class="table-info">
         <tr>
-          <th ng-repeat="(key,value) in $ctrl.same[0]">{{key}}</th>
+          <th ng-repeat="(key, value) in $ctrl.wells[0]">{{key}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="month in $ctrl.same | orderBy: $ctrl.orderFunction" >
-          <td ng-repeat="(key, value) in month">
+        <tr ng-repeat="well in $ctrl.wells | orderBy: $ctrl.orderFunction">
+          <td ng-repeat="(key, value) in well">
             {{value}}
           </td>
         </tr>

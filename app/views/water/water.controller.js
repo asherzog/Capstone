@@ -71,19 +71,16 @@
             });
             if (!found) { vm.same.push({
               Month: vm.pdp[j].month,
-              PDP: numberWithCommas(vm.pdp[j].total),
+              PDP: waterService.numberWithCommas(vm.pdp[j].total),
               New_Wells: 0,
               Total: vm.pdp[j].total
             }); }
           }
-          function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          }
           for (var i = 0; i < myArr.length; i++) {
             for (var j = 0; j < vm.pdp.length; j++) {
               if (myArr[i].month == vm.pdp[j].month) {
-                vm.same[j]['New_Wells'] += myArr[i].total;
-                vm.same[j]['Total'] += myArr[i].total;
+                vm.same[j]['New_Wells'] = waterService.numberWithCommas(Number(vm.same[j]['New_Wells']) + myArr[i].total);
+                vm.same[j]['Total'] = waterService.numberWithCommas(Number(vm.same[j]['Total']) + myArr[i].total);
               }
             }
           }
@@ -144,5 +141,6 @@
           return totals;
         });
     }
+
   };
 }());

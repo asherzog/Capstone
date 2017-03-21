@@ -1,3 +1,10 @@
 <div class="graph">
-  <h1>hi from monthly graph</h1>
+  <canvas id="line" class="chart chart-line" chart-data="$ctrl.data"
+    chart-labels="$ctrl.labels" chart-series="$ctrl.series" chart-options="$ctrl.options"
+    chart-dataset-override="$ctrl.datasetOverride" chart-colors="$ctrl.colors">
+  </canvas>
+  <canvas id="line" class="chart chart-line" chart-data="$ctrl.dataDaily"
+    chart-labels="$ctrl.labelsDaily" chart-series="$ctrl.series" chart-options="$ctrl.optionsDaily"
+    chart-dataset-override="$ctrl.datasetOverride" chart-colors="$ctrl.colors">
+  </canvas>
 </div>

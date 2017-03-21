@@ -6,9 +6,19 @@
     .service('waterService', service);
 
   function service($http, HomeService) {
+    this.getWaterMonthly = function(system) {
+      return $http.get(`http://localhost:3000/waterSystem/${system}`)
+        .then(response => {
+          return response.data;
+        });
+    };
 
-    this.tcs = {};
-
+    this.getWaterDaily = function(system) {
+      return $http.get(`http://localhost:3000/waterSystemDaily/${system}`)
+        .then(response => {
+          return response.data;
+        });
+    };
 
     this.getWaterSystem = function(name) {
       return $http.get(`http://localhost:3000/water/${name}`)

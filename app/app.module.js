@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('app', ['ui.router', 'ui.sortable']);
+    .module('app', ['ui.router', 'ui.sortable', 'chart.js']);
 
 }());

@@ -6,6 +6,10 @@
     .service('waterService', service);
 
   function service($http, HomeService) {
+
+    this.tcs = {};
+
+
     this.getWaterSystem = function(name) {
       return $http.get(`http://localhost:3000/water/${name}`)
             .then((response) => {

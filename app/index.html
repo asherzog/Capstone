@@ -21,13 +21,25 @@
       .tables {
         width: 100vw;
       }
-      .line {
-        fill: none;
-        stroke: blue;
-        stroke-width: 2px;
+      .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        margin-left: 40vw;
+        animation: spin 2s linear infinite;
       }
-    </style>
 
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+    </style>
+    <button class="btn btn-success" ui-sref="home">
+      Home
+    </button>
     <ui-view></ui-view>
 
   <script src="./node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
@@ -64,5 +76,8 @@
   <script src="../app/views/monthlyGraph/monthlyGraph.component.js" charset="utf-8"></script>
   <script src="../app/views/monthlyGraph/monthlyGraph.controller.js" charset="utf-8"></script>
   <script src="../app/views/monthlyGraph/monthlyGraph.template.html" charset="utf-8"></script>
+  <script src="../app/views/graphs/graphs.component.js" charset="utf-8"></script>
+  <script src="../app/views/graphs/graphs.controller.js" charset="utf-8"></script>
+  <script src="../app/views/graphs/graphs.template.html" charset="utf-8"></script>
   </body>
 </html>

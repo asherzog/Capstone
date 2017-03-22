@@ -37,9 +37,10 @@
           return vm.data;
         })
         .then(() => {
+          document.getElementById('loading').remove("loader");
           vm.series = ['PDP', 'New Wells', 'Total'];
           vm.colors = [{
-            backgroundColor : 'transparent',
+            backgroundColor : '#0062ff',
             pointBackgroundColor: '#0062ff',
             pointHoverBackgroundColor: '#0062ff',
             borderColor: '#0062ff',
@@ -47,22 +48,22 @@
             pointHoverBorderColor: '#0062ff',
             fill: false
           },{
-            backgroundColor:'transparent',
-            pointBackgroundColor: '#46BFBD',
-            pointBorderColor: '#46BFBD',
-            pointHoverBackgroundColor: '#46BFBD',
-            borderColor: '#46BFBD',
-            pointBorderColor: '#46BFBD',
-            pointHoverBorderColor: '#46BFBD',
+            backgroundColor:'#009900',
+            pointBackgroundColor: '#009900',
+            pointBorderColor: '#009900',
+            pointHoverBackgroundColor: '#009900',
+            borderColor: '#009900',
+            pointBorderColor: '#009900',
+            pointHoverBorderColor: '#009900',
             fill: false
           }, {
-            backgroundColor:'transparent',
-            pointBackgroundColor: '#800000',
-            pointBorderColor: '#800000',
-            pointHoverBackgroundColor: '#800000',
-            borderColor: '#800000',
-            pointBorderColor: '#800000',
-            pointHoverBorderColor: '#800000',
+            backgroundColor:'#670422',
+            pointBackgroundColor: '#670422',
+            pointBorderColor: '#670422',
+            pointHoverBackgroundColor: '#670422',
+            borderColor: '#670422',
+            pointBorderColor: '#670422',
+            pointHoverBorderColor: '#670422',
             fill: false
           }];
           vm.options = {

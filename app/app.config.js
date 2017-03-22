@@ -15,8 +15,13 @@
       })
       .state({
         name: 'water',
-        url: '/{water:string}',
+        url: '/water/{water:string}',
         component: 'water',
+      })
+      .state({
+        name: 'graphs',
+        url: '/graphs',
+        component: 'graphs'
       })
     $urlRouterProvider.otherwise('/');
   }

@@ -20,6 +20,14 @@
         });
     };
 
+
+    this.getAllSystems = function() {
+      return $http.get(`http://localhost:3000/allsystems`)
+        .then(response => {
+          return response.data;
+        });
+    };
+
     this.getWaterSystem = function(name) {
       return $http.get(`http://localhost:3000/water/${name}`)
             .then((response) => {

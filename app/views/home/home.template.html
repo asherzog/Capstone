@@ -1,20 +1,10 @@
 <section class="home">
   <div class="text-center">
-    <div ng-repeat="system in $ctrl.systems">
-      <a ui-sref="water({water: system})">
-        <button type="button" class="btn btn-primary">
-          {{system}}
-        </button>
-      </a>
-    </div>
     <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled">
       +
     </button>
     <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
       {{$ctrl.btnText ? 'Edit' : 'Save'}}
-    </button>
-    <button class="btn btn-danger" ui-sref="graphs">
-      View All
     </button>
   </div>
   <div ng-repeat="rig in $ctrl.newRigs" id="table">

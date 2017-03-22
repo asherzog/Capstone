@@ -9,6 +9,7 @@
     const vm = this;
     vm.$onInit = loadData;
     vm.data = [];
+    vm.dailyData = [];
     vm.series = [];
 
 
@@ -31,13 +32,34 @@
                   return month.Total;
                 });
                 vm.data.push(total);
+              })
+              .then(() => {
+                return waterService.getWaterDaily(system)
+                  .then(response => {
+                    response = response.sort(function(a, b) {
+                      a = new Date(a.Day);
+                      b = new Date(b.Day);
+                      return a<b ? -1 : a>b ? 1 : 0;
+                    });
+                    vm.labelsDaily = response.map(month => {
+                      return month.Day;
+                    });
+                    let total = response.map(month => {
+                      if (typeof month.Total != 'number') {
+                        month.Total = Number(month.Total.replace(',',''));
+                      }
+                      return month.Total;
+                    });
+                    vm.dailyData.push(total);
+                    console.log(vm.dailyData);
+                  });
               });
             vm.series.push(system);
-            return vm.data;
+            console.log(vm.series);
           });
         })
         .then(() => {
-          vm.colors = ["#274769","#670422","#385e27"]
+          vm.colors = ["#274769","#670422","#385e27"];
           vm.colorsLine = [{
             backgroundColor : '#274769',
             pointBackgroundColor: '#274769',
@@ -65,6 +87,55 @@
             pointHoverBorderColor: '#385e27',
             fill: false
           }];
+          vm.optionsDaily = {
+            scales: {
+              yAxes: [
+                {
+                  id: 'y-axis-1',
+                  type: 'linear',
+                  display: true,
+                  position: 'left',
+                }
+              ]
+            },
+            title: {
+              display: true,
+              text: "Daily Water Forecast",
+              fontSize: 30
+            },
+            legend: {
+              display: true,
+              cursor: "pointer",
+              labels: {
+                fontSize: 20
+              }
+            }
+          };
+          vm.optionsDailyStacked = {
+            scales: {
+              yAxes: [
+                {
+                  id: 'y-axis-1',
+                  type: 'linear',
+                  stacked: true,
+                  display: true,
+                  position: 'left',
+                }
+              ]
+            },
+            title: {
+              display: true,
+              text: "Daily Water Forecast",
+              fontSize: 30
+            },
+            legend: {
+              display: true,
+              cursor: "pointer",
+              labels: {
+                fontSize: 20
+              }
+            }
+          };
           vm.options = {
             scales: {
               yAxes: [

@@ -20,6 +20,7 @@
         vm.systems = [];
         rigs.forEach(rig => {
           rig.Wells.forEach(well => {
+            delete well.editing;
             well.SPUD = HomeService.convertDate(well.SPUD, 0);
             if (well.COMPLETION) {
               well.COMPLETION = HomeService.convertDate(well.COMPLETION, 0);

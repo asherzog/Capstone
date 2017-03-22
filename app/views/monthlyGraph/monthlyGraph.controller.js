@@ -8,6 +8,7 @@
   function monthlyGraphController($http, $state, waterService, HomeService) {
     const vm = this;
     let system = $state.params.water;
+    vm.system = system;
     vm.$onInit = loadData;
     vm.monthly;
 

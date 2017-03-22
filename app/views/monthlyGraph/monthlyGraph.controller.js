@@ -11,7 +11,6 @@
     vm.$onInit = loadData;
     vm.monthly;
 
-
     function loadData() {
       waterService.getWaterMonthly(system)
         .then(response => {
@@ -37,7 +36,6 @@
           return vm.data;
         })
         .then(() => {
-          document.getElementById('loading').remove("loader");
           vm.series = ['PDP', 'New Wells', 'Total'];
           vm.colors = [{
             backgroundColor : '#0062ff',
@@ -117,33 +115,34 @@
                 }
                 return month.Total;
               });
+              document.getElementById('loading').remove("loader");
               vm.dataDaily = [pdp, wells, total];
               return vm.dataDaily;
             });
-            vm.optionsDaily = {
-              scales: {
-                yAxes: [
-                  {
-                    id: 'y-axis-1',
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                  }
-                ]
-              },
-              title: {
-                display: true,
-                text: "Daily Water Forecast",
-                fontSize: 30
-              },
-              legend: {
-                display: true,
-                cursor: "pointer",
-                labels: {
-                  fontSize: 20
+          vm.optionsDaily = {
+            scales: {
+              yAxes: [
+                {
+                  id: 'y-axis-1',
+                  type: 'linear',
+                  display: true,
+                  position: 'left',
                 }
+              ]
+            },
+            title: {
+              display: true,
+              text: "Daily Water Forecast",
+              fontSize: 30
+            },
+            legend: {
+              display: true,
+              cursor: "pointer",
+              labels: {
+                fontSize: 20
               }
-            };
+            }
+          };
         });
     }
   }

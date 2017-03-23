@@ -1,0 +1,35 @@
+<section class="container formWrapper">
+  <form name="$ctrl.newPost" novalidate ng-submit="$ctrl.createNewWell()">
+    <div class="form-group">
+      <label for="wellName">Well Name</label>
+      <input type="text" class="form-control" id="wellName" ng-model="$ctrl.well">
+    </div>
+    <div class="form-group">
+      <label for="waterSystem">Water System</label>
+      <select class="form-control" id="waterSystem" ng-model="$ctrl.system">
+        <option ng-repeat="system in $ctrl.systems">{{system}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="rig">Rig</label>
+      <select class="form-control" id="rig" ng-model="$ctrl.rig">
+        <option ng-repeat="rig in $ctrl.rigs">{{rig}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="typeCurve">Type Curve</label>
+      <select class="form-control" id="typeCurve" ng-model="$ctrl.tc">
+        <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="spudSpud">Spud-Spud</label>
+      <input type="text" class="form-control" id="spudSpud" ng-model="$ctrl.spudSpud">
+    </div>
+    <div class="form-group">
+      <label for="spud">Spud</label>
+      <input type="date" class="form-control" id="spud" ng-model="$ctrl.spud">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</section>

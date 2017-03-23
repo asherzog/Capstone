@@ -52,11 +52,17 @@
               if (key == 'SPUD'){
                 for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
                   vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                    console.log(response);
+                  });
                 }
               }
               if (key == 'SPUD-SPUD') {
                 for (var k = (j); k < vm.newRigs[i].Wells.length; k++) {
                   vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                    console.log(response);
+                  });
                 }
               }
             }
@@ -74,7 +80,7 @@
       let dropIndex = ui.item.sortable.dropindex;
       rigArr[dropIndex].COMPLETION = null;
 
-      if (rigArr[0].RIG == "Rig 1" && rigArr[1].RIG == "Rig 1") {
+      if (rigArr[0].RIG == "Rig 1" && rigArr[1].RIG == "Rig 1" || rigArr[1].RIG == "Rig 1" && rigArr[2].RIG == "Rig 1") {
         rigArr[dropIndex].RIG = "Rig 1";
         for (var i = dropIndex; i < rigArr.length; i++) {
           if (i > 0) {

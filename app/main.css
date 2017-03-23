@@ -18,7 +18,7 @@ nav .container {
   margin: 0 1em 0 1em;
 }
 .logo {
-  background-image: url('Centennial-logo.png');
+  background-image: url('./assets/Centennial-logo.png');
   background-repeat: no-repeat;
   background-size: contain;
   height: 10em;

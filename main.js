@@ -6,6 +6,8 @@ const url = require('url');
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
+
+
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({width: 1000, height: 800, titleBarStyle: 'hidden'});

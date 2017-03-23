@@ -1,0 +1,69 @@
+.btn {
+  margin: 0.25em;
+  height: 3em;
+}
+nav {
+  background: linear-gradient(#2174ad,#376379);
+  height: 8em;
+}
+nav .container {
+  display: flex;
+  justify-content: space-around;
+}
+.buttons {
+  top: 50%;
+  align-self: center;
+}
+#table {
+  margin: 0 1em 0 1em;
+}
+.logo {
+  background-image: url('./assets/Centennial-logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 10em;
+  width: 18em;
+}
+.home {
+  margin-top: 0.5em;
+}
+.table {
+  font-size: 0.75em;
+}
+.sortable-placeholder {
+  background: #dae2ef;
+}
+.tables {
+  width: 90vw;
+  justify-content: space-between;
+  margin-top: 1.5em;
+}
+
+.daily {
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.formWrapper {
+  width: 30%;
+}
+
+.waterHeadline {
+  font-size: 3em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: 40vw;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

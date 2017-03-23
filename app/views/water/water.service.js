@@ -28,6 +28,21 @@
         });
     };
 
+    this.getAllRigs = function() {
+      return $http.get(`http://localhost:3000/allrigs`)
+        .then(response => {
+          return response.data;
+        });
+    };
+
+    this.getAllTc = function() {
+      return $http.get(`http://localhost:3000/alltc`)
+        .then(response => {
+          return response.data;
+        });
+    };
+
+
     this.getWaterSystem = function(name) {
       return $http.get(`http://localhost:3000/water/${name}`)
             .then((response) => {

@@ -23,6 +23,11 @@
         url: '/graphs',
         component: 'graphs'
       })
+      .state({
+        name: 'addForm',
+        url: '/add',
+        component: 'addForm'
+      })
     $urlRouterProvider.otherwise('/');
   }
 }());

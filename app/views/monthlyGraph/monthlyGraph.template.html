@@ -1,5 +1,8 @@
 <div class="text-center">
   <h1 class="waterHeadline">{{$ctrl.system}} Water System</h1>
+  <button class="btn btn-primary" ng-click="$ctrl.printer()">
+    Print
+  </button>
 </div>
 <div class="graph" >
   <canvas id="line" class="chart chart-line" chart-data="$ctrl.data"

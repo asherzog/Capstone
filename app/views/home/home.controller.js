@@ -5,13 +5,27 @@
     .module('app')
     .controller('homeController', homeController);
 
-  function homeController($http, HomeService) {
+  function homeController($http, HomeService, $scope) {
     const vm = this;
+    const {ipcRenderer} = require('electron');
     vm.newRigs;
     vm.btnText = true;
     vm.editting = false;
     vm.blur = editing;
     vm.$onInit = loadData;
+    vm.printing = 'table-responsive';
+
+    vm.printer = function() {
+      vm.printing = '';
+      console.log('clicked');
+      ipcRenderer.send('printingHome', 'ping')
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        console.log(path);
+        vm.printing = 'table-responsive';
+        $scope.$apply();
+        // document.getElementById('pdf-path').innerHTML = message
+      });
+    };
 
 
     function loadData() {

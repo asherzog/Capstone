@@ -17,12 +17,14 @@ nav .container {
 #table {
   margin: 0 1em 0 1em;
 }
+
 .logo {
   background-image: url('./assets/Centennial-logo.png');
   background-repeat: no-repeat;
   background-size: contain;
-  height: 10em;
-  width: 18em;
+  margin-top: 0.25em;
+  height: 18em;
+  width: 15em;
 }
 .home {
   margin-top: 0.5em;

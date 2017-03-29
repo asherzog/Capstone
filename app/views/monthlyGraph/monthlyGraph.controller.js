@@ -11,6 +11,17 @@
     vm.system = system;
     vm.$onInit = loadData;
     vm.monthly;
+    const {ipcRenderer} = require('electron');
+
+
+    vm.printer = function() {
+      console.log('clicked');
+      ipcRenderer.send('printingHome', 'ping')
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        console.log(path);
+        // document.getElementById('pdf-path').innerHTML = message
+      });
+    };
 
     function loadData() {
       waterService.getWaterMonthly(system)

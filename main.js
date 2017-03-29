@@ -1,6 +1,9 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, ipcMain, shell} = require('electron');
 const path = require('path');
 const url = require('url');
+const fs = require('fs');
+const os = require('os');
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,7 +13,15 @@ let win;
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 1000, height: 800, titleBarStyle: 'hidden'});
+  win = new BrowserWindow({
+    width: 1000,
+    height: 800,
+    titleBarStyle: 'hidden',
+    webPreferences: {
+      DevTools: true,
+      zoomFactor: 1.0
+    }
+  });
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -19,8 +30,6 @@ function createWindow () {
     slashes: true
   }));
 
-  // Open the DevTools.
-  // win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -51,4 +60,27 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+ipcMain.on('printingHome', (event, arg) => {
+  console.log(arg);
+  const pdfPath = path.join(os.tmpdir(), 'print.pdf')
+  const win = BrowserWindow.fromWebContents(event.sender)
+  // Use default printing options
+  win.webContents.printToPDF({
+    marginsType: 1,
+    pageSize: 'Tabloid',
+    printBackground: true,
+    printSelectionOnly: false,
+    landscape: true
+  }, function (error, data) {
+    if (error) throw error
+    fs.writeFile(pdfPath, data, function (error) {
+      if (error) {
+        throw error
+      }
+      shell.openExternal('file://' + pdfPath)
+      event.sender.send('wrote-pdf', pdfPath)
+    });
+  });
 });

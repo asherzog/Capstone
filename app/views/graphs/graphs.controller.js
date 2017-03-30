@@ -95,8 +95,12 @@
                   type: 'linear',
                   display: true,
                   position: 'left',
-                }
-              ]
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
+                }]
             },
             title: {
               display: true,
@@ -108,6 +112,13 @@
               cursor: "pointer",
               labels: {
                 fontSize: 20
+              }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
               }
             }
           };
@@ -120,6 +131,11 @@
                   stacked: true,
                   display: true,
                   position: 'left',
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
                 }
               ]
             },
@@ -134,6 +150,13 @@
               labels: {
                 fontSize: 20
               }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
+              }
             }
           };
           vm.options = {
@@ -145,6 +168,11 @@
                   stacked: true,
                   display: true,
                   position: 'left',
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
                 }
               ]
             },
@@ -159,6 +187,13 @@
               labels: {
                 fontSize: 20
               }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
+              }
             }
           };
           vm.optionsLine = {
@@ -169,6 +204,11 @@
                   type: 'linear',
                   display: true,
                   position: 'left',
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
                 }
               ]
             },
@@ -182,6 +222,13 @@
               cursor: "pointer",
               labels: {
                 fontSize: 20
+              }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
               }
             }
           };

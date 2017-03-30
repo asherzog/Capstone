@@ -37,7 +37,7 @@ nav .container {
 }
 .tables {
   width: 90vw;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   margin-top: 1.5em;
 }
 

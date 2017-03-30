@@ -84,6 +84,11 @@
                   type: 'linear',
                   display: true,
                   position: 'left',
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
                 }
               ]
             },
@@ -97,6 +102,13 @@
               cursor: "pointer",
               labels: {
                 fontSize: 20
+              }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
               }
             }
           };
@@ -139,6 +151,11 @@
                   type: 'linear',
                   display: true,
                   position: 'left',
+                  ticks : {
+                    callback: function(value) {
+                      return waterService.numberWithCommas(value);
+                    }
+                  }
                 }
               ]
             },
@@ -152,6 +169,13 @@
               cursor: "pointer",
               labels: {
                 fontSize: 20
+              }
+            },
+            tooltips: {
+              callbacks: {
+                label: function (tooltipItems, data) {
+                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
+                }
               }
             }
           };

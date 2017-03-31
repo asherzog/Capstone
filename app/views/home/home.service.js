@@ -6,6 +6,15 @@
     .service('HomeService', service);
 
   function service($http) {
+
+    this.addNewWell = function(well) {
+      return $http.post('http://localhost:3000/wells', well)
+        .then((response) => {
+          console.log(response);
+        });
+    };
+
+
     this.getAllWells = function() {
       return $http.get('http://localhost:3000/wells')
             .then((response) => {

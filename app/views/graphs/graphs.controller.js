@@ -11,6 +11,17 @@
     vm.data = [];
     vm.dailyData = [];
     vm.series = [];
+    const {ipcRenderer} = require('electron');
+
+
+    vm.printer = function() {
+      console.log('clicked');
+      ipcRenderer.send('printingGraphs', 'ping')
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        console.log(path);
+        // document.getElementById('pdf-path').innerHTML = message
+      });
+    };
 
 
     function loadData() {

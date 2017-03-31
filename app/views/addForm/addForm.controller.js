@@ -9,8 +9,9 @@
     const vm = this;
     vm.$onInit = loadData;
     vm.createNewWell = createNewWell;
-
-
+    vm.systems;
+    vm.rigs;
+    vm.tcs;
 
     function createNewWell() {
       let well = {
@@ -22,6 +23,10 @@
         SPUD: HomeService.convertDate(vm.spud, 0)
       };
       console.log(well);
+      HomeService.addNewWell(well)
+        .then(() => {
+          $state.go('home');
+        });
     }
 
 

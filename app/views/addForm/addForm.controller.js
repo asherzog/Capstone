@@ -12,6 +12,7 @@
     vm.systems;
     vm.rigs;
     vm.tcs;
+    vm.type = "Well"
 
     function createNewWell() {
       let well = {
@@ -22,11 +23,12 @@
         SPUD_SPUD: vm.spudSpud,
         SPUD: HomeService.convertDate(vm.spud, 0)
       };
-      console.log(well);
-      HomeService.addNewWell(well)
-        .then(() => {
-          $state.go('home');
-        });
+      // console.log(well);
+      // HomeService.addNewWell(well)
+      //   .then(() => {
+      //     $state.go('home');
+      //   });
+      console.log(vm.type);
     }
 
 

@@ -12,23 +12,42 @@
     vm.systems;
     vm.rigs;
     vm.tcs;
-    vm.type = "Well"
+    vm.type = "Well";
 
     function createNewWell() {
-      let well = {
-        RIG: vm.rig,
-        WELL: vm.well,
-        WATER_SYSTEM: vm.system,
-        TYPE_CURVE: vm.tc,
-        SPUD_SPUD: vm.spudSpud,
-        SPUD: HomeService.convertDate(vm.spud, 0)
-      };
-      // console.log(well);
-      // HomeService.addNewWell(well)
-      //   .then(() => {
-      //     $state.go('home');
-      //   });
-      console.log(vm.type);
+      if (vm.type == "Well") {
+        let well = {
+          RIG: vm.rig,
+          WELL: vm.name,
+          WATER_SYSTEM: vm.system,
+          TYPE_CURVE: vm.tc,
+          SPUD_SPUD: vm.spudSpud,
+        };
+        if (vm.spud) {
+          well['SPUD'] = HomeService.convertDate(vm.spud, 0);
+        } else {
+          HomeService.getRig(vm.rig)
+            .then((response) => {
+              let min = new Date(response[0].SPUD);
+              response.forEach(well => {
+                if (new Date(well.SPUD).getTime() > min.getTime()) {
+                  min = new Date(well.SPUD);
+                }
+              });
+              well['SPUD'] = HomeService.convertDate(min, Number(vm.spudSpud));
+              return well;
+            })
+            .then(well => {
+              // HomeService.addNewWell(well)
+              //   .then(() => {
+              //     $state.go('home');
+              //   });
+              console.log(well);
+            });
+        }
+      } else if (vm.type == "Rig") {
+        console.log(vm.name);
+      }
     }
 
 

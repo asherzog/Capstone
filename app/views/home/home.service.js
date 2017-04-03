@@ -14,6 +14,12 @@
         });
     };
 
+    this.getRig = function(rig) {
+      return $http.get(`http://localhost:3000/rig/${rig}`)
+        .then((response) => {
+          return response.data;
+        });
+    };
 
     this.getAllWells = function() {
       return $http.get('http://localhost:3000/wells')

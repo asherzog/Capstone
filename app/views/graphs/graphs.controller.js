@@ -62,11 +62,9 @@
                       return month.Total;
                     });
                     vm.dailyData.push(total);
-                    console.log(vm.dailyData);
                   });
               });
             vm.series.push(system);
-            console.log(vm.series);
           });
         })
         .then(() => {

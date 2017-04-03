@@ -36,7 +36,10 @@
             return month.New_Wells;
           });
           let pdp = response.map(month => {
-            return Number(month.PDP.replace(',',''));
+            if (month.PDP != 0) {
+              month.PDP = Number(month.PDP.replace(',',''));
+            }
+            return month.PDP;
           });
           let total = response.map(month => {
             if (typeof month.Total != 'number') {
@@ -131,7 +134,10 @@
                 return month.New_Wells;
               });
               let pdp = response.map(month => {
-                return Number(month.PDP.replace(',',''));
+                if (month.PDP != 0) {
+                  month.PDP = Number(month.PDP.replace(',',''));
+                }
+                return month.PDP;
               });
               let total = response.map(month => {
                 if (typeof month.Total != 'number') {

@@ -10,30 +10,30 @@
 <section class="container formWrapper">
   <form name="$ctrl.newPost" novalidate ng-submit="$ctrl.createNewWell()">
     <div class="form-group">
-      <label for="wellName">{{$ctrl.type}} Name</label>
-      <input type="text" class="form-control" id="wellName" ng-model="$ctrl.well">
+      <label for="wellName">{{$ctrl.type}} Name <span ng-show="!$ctrl.newPost.name.$valid" style="color: red">*</span></label>
+      <input type="text" name="name" class="form-control" id="wellName" ng-model="$ctrl.name" required="true">
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="waterSystem">Water System</label>
-      <select class="form-control" id="waterSystem" ng-model="$ctrl.system">
+      <label for="waterSystem">Water System <span ng-show="!$ctrl.newPost.system.$valid" style="color: red">*</span></label>
+      <select class="form-control" id="waterSystem" ng-model="$ctrl.system" required="true" name="system">
         <option ng-repeat="system in $ctrl.systems">{{system}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="rig">Rig</label>
-      <select class="form-control" id="rig" ng-model="$ctrl.rig">
+      <label for="rig">Rig <span ng-show="!$ctrl.newPost.rig.$valid" style="color: red">*</span></label>
+      <select class="form-control" id="rig" ng-model="$ctrl.rig" required="true" name="rig">
         <option ng-repeat="rig in $ctrl.rigs">{{rig}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="typeCurve">Type Curve</label>
-      <select class="form-control" id="typeCurve" ng-model="$ctrl.tc">
+      <label for="typeCurve">Type Curve <span ng-show="!$ctrl.newPost.tc.$valid" style="color: red">*</span></label>
+      <select class="form-control" id="typeCurve" ng-model="$ctrl.tc" required="true" name="tc">
         <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="spudSpud">Spud-Spud</label>
-      <input type="text" class="form-control" id="spudSpud" ng-model="$ctrl.spudSpud">
+      <label for="spudSpud">Spud-Spud <span ng-show="!$ctrl.newPost.spudSpud.$valid" style="color: red">*</span></label>
+      <input type="text" class="form-control" id="spudSpud" ng-model="$ctrl.spudSpud" required="true" name="spudSpud">
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
       <label for="spud">Spud</label>

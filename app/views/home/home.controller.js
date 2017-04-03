@@ -5,7 +5,7 @@
     .module('app')
     .controller('homeController', homeController);
 
-  function homeController($http, HomeService, $scope) {
+  function homeController($http, HomeService, $scope, $window) {
     const vm = this;
     const {ipcRenderer} = require('electron');
     vm.newRigs;
@@ -14,13 +14,18 @@
     vm.blur = editing;
     vm.$onInit = loadData;
     vm.printing = 'table-responsive';
+    vm.options = {
+      disabled: false,
+      connectWith: '.rig',
+      scroll: true,
+      stop: updateTable,
+      placeholder: "sortable-placeholder"
+    };
 
     vm.printer = function() {
       vm.printing = '';
-      console.log('clicked');
       ipcRenderer.send('printingHome', 'ping')
       ipcRenderer.on('wrote-pdf', function (event, path) {
-        console.log(path);
         vm.printing = 'table-responsive';
         $scope.$apply();
         // document.getElementById('pdf-path').innerHTML = message
@@ -42,17 +47,10 @@
             if (vm.systems.indexOf(well.WATER_SYSTEM) == -1)
               vm.systems.push(well.WATER_SYSTEM);
           });
-          rig.Wells = alasql('SELECT * FROM ? ORDER BY SPUD',[rig.Wells]);
+          rig.Wells = alasql('SELECT * FROM ? ORDER BY new Date(SPUD)',[rig.Wells]);
         });
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
-        vm.options = {
-          disabled: false,
-          connectWith: '.rig',
-          scroll: true,
-          stop: updateTable,
-          placeholder: "sortable-placeholder"
-        };
       });
     };
 
@@ -79,6 +77,9 @@
                   });
                 }
               }
+              if (key == 'WATER_SYSTEM') {
+                $window.location.reload();
+              }
             }
             HomeService.updateWells(vm.newRigs[i].Wells[j]).then(response => {
               console.log(response);
@@ -86,6 +87,7 @@
           }
         }
       }
+      loadData();
     };
 
     function updateTable(e, ui) {

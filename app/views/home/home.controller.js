@@ -5,7 +5,7 @@
     .module('app')
     .controller('homeController', homeController);
 
-  function homeController($http, HomeService, $scope, $window) {
+  function homeController($http, HomeService, $scope, $window, $state) {
     const vm = this;
     const {ipcRenderer} = require('electron');
     vm.newRigs;
@@ -14,6 +14,7 @@
     vm.blur = editing;
     vm.$onInit = loadData;
     vm.printing = 'table-responsive';
+    vm.delete = deleteWell;
     vm.options = {
       disabled: false,
       connectWith: '.rig',
@@ -69,6 +70,14 @@
                   });
                 }
               }
+              if (key == 'RIG'){
+                for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
+                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                    console.log(response);
+                  });
+                }
+              }
               if (key == 'SPUD-SPUD') {
                 for (var k = (j); k < vm.newRigs[i].Wells.length; k++) {
                   vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
@@ -114,6 +123,21 @@
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
         }
         vm.newRigs[1].Wells = rigArr;
+      }
+    };
+
+    function deleteWell(well) {
+      if (confirm(`Delete ${well.WELL}?`)) {
+        vm.newRigs.forEach(rig => {
+          if (rig.RIG == well.RIG) {
+            rig.Wells.splice(rig.Wells.indexOf(well), 1);
+          }
+        });
+        HomeService.deleteWell(well['_id'])
+          .then(response => {
+            console.log(response);
+            $state.reload();
+          });
       }
     };
 

@@ -7,7 +7,7 @@
   </div>
 </div>
 <section class="container formWrapper">
-  <form name="$ctrl.newPost" ng-submit="$ctrl.createNewWell()">
+  <form name="$ctrl.newPost" novalidate ng-submit="$ctrl.createNewWell()">
     <div class="form-group">
       <label for="wellName">{{$ctrl.type}} Name <span ng-show="!$ctrl.newPost.name.$valid" style="color: red">*</span></label>
       <input type="text" name="name" class="form-control" id="wellName" ng-model="$ctrl.name" required="true">

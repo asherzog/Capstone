@@ -14,6 +14,13 @@
         });
     };
 
+    this.deleteWell = function(id) {
+      return $http.delete(`http:localhost:3000/wells/${id}`)
+        .then((response) => {
+          return response.data;
+        });
+    };
+
     this.getRig = function(rig) {
       return $http.get(`http://localhost:3000/rig/${rig}`)
         .then((response) => {

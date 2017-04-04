@@ -31,6 +31,10 @@
         }
         if (vm.spud) {
           well['SPUD'] = HomeService.convertDate(vm.spud, 0);
+          HomeService.addNewWell(well)
+            .then(() => {
+              $state.go('home', {}, {reload: true});
+            });
         } else {
           HomeService.getRig(vm.rig)
             .then((response) => {

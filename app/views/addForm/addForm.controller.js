@@ -17,8 +17,10 @@
     function createNewWell() {
       if (vm.type == "Well") {
         let well = {
+          RIG: vm.rig,
           WELL: vm.name,
           TYPE_CURVE: vm.tc,
+          WATER_SYSTEM: vm.system,
           SPUD_SPUD: vm.spudSpud,
         };
         if (vm.system == "CREATE NEW") {
@@ -46,14 +48,13 @@
               return well;
             })
             .then(well => {
-              // HomeService.addNewWell(well)
-              //   .then(() => {
-              //     $state.go('home');
-              //   });
-              console.log(well);
+              HomeService.addNewWell(well)
+                .then(() => {
+                  $state.go('home', {}, {reload: true});
+                });
             });
         }
-      } 
+      }
     }
 
 

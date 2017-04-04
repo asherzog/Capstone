@@ -13,17 +13,19 @@
       <input type="text" name="name" class="form-control" id="wellName" ng-model="$ctrl.name" required="true">
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="waterSystem">Water System <span ng-show="!$ctrl.newPost.system.$valid; !$ctrl.newPost.newSystem.$valid" style="color: red">*</span></label>
+      <label for="waterSystem">Water System <span ng-show="!$ctrl.newPost.system.$valid" style="color: red">*</span>
+      <span ng-if="$ctrl.system == 'CREATE NEW' && !$ctrl.newPost.newSystem.$valid" style="color: red">*</span></label>
       <select class="form-control" id="waterSystem" ng-model="$ctrl.system" required="true" name="system">
         <option ng-repeat="system in $ctrl.systems">{{system}}</option>
-        <input type="text" ng-show="$ctrl.system == 'CREATE NEW'" ng-model="$ctrl.newSystem" name="newSystem" required="true">
+        <input type="text" class="form-control" ng-if="$ctrl.system == 'CREATE NEW'" ng-model="$ctrl.newSystem" name="newSystem" ng-require="$ctrl.system == 'CREATE NEW'">
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">
-      <label for="rig">Rig <span ng-show="!$ctrl.newPost.rig.$valid; !$ctrl.newPost.newRig.$valid" style="color: red">*</span></label>
+      <label for="rig">Rig <span ng-show="!$ctrl.newPost.rig.$valid" style="color: red">*</span>
+      <span ng-if="$ctrl.rig == 'CREATE NEW' && !$ctrl.newPost.newRig.$valid" style="color: red">*</span></label>
       <select class="form-control" id="rig" ng-model="$ctrl.rig" required="true" name="rig">
         <option ng-repeat="rig in $ctrl.rigs">{{rig}}</option>
-        <input type="text" ng-show="$ctrl.rig == 'CREATE NEW'" ng-model="$ctrl.newRig" name="newRig" required="true">
+        <input type="text" class="form-control" ng-show="$ctrl.rig == 'CREATE NEW'" ng-model="$ctrl.newRig" name="newRig" ng-require="$ctrl.rig == 'CREATE NEW'">
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Well'">

@@ -68,7 +68,7 @@
           });
         })
         .then(() => {
-          vm.colors = ["#274769","#670422","#385e27"];
+          vm.colors = ["#274769","#670422","#385e27","#f49542","#b541f4","#41c7f4","#aff441","#f44141","#4c4b56"];
           vm.colorsLine = [{
             backgroundColor : '#274769',
             pointBackgroundColor: '#274769',
@@ -94,6 +94,60 @@
             borderColor: '#385e27',
             pointBorderColor: '#385e27',
             pointHoverBorderColor: '#385e27',
+            fill: false
+          }, {
+            backgroundColor:'#f49542',
+            pointBackgroundColor: '#f49542',
+            pointBorderColor: '#f49542',
+            pointHoverBackgroundColor: '#f49542',
+            borderColor: '#f49542',
+            pointBorderColor: '#f49542',
+            pointHoverBorderColor: '#f49542',
+            fill: false
+          }, {
+            backgroundColor:'#b541f4',
+            pointBackgroundColor: '#b541f4',
+            pointBorderColor: '#b541f4',
+            pointHoverBackgroundColor: '#b541f4',
+            borderColor: '#b541f4',
+            pointBorderColor: '#b541f4',
+            pointHoverBorderColor: '#b541f4',
+            fill: false
+          }, {
+            backgroundColor:'#41c7f4',
+            pointBackgroundColor: '#41c7f4',
+            pointBorderColor: '#41c7f4',
+            pointHoverBackgroundColor: '#41c7f4',
+            borderColor: '#41c7f4',
+            pointBorderColor: '#41c7f4',
+            pointHoverBorderColor: '#41c7f4',
+            fill: false
+          }, {
+            backgroundColor:'#aff441',
+            pointBackgroundColor: '#aff441',
+            pointBorderColor: '#aff441',
+            pointHoverBackgroundColor: '#aff441',
+            borderColor: '#aff441',
+            pointBorderColor: '#aff441',
+            pointHoverBorderColor: '#aff441',
+            fill: false
+          }, {
+            backgroundColor:'#f44141',
+            pointBackgroundColor: '#f44141',
+            pointBorderColor: '#f44141',
+            pointHoverBackgroundColor: '#f44141',
+            borderColor: '#f44141',
+            pointBorderColor: '#f44141',
+            pointHoverBorderColor: '#f44141',
+            fill: false
+          }, {
+            backgroundColor:'#4c4b56',
+            pointBackgroundColor: '#4c4b56',
+            pointBorderColor: '#4c4b56',
+            pointHoverBackgroundColor: '#4c4b56',
+            borderColor: '#4c4b56',
+            pointBorderColor: '#4c4b56',
+            pointHoverBorderColor: '#4c4b56',
             fill: false
           }];
           vm.optionsDaily = {

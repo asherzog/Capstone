@@ -66,13 +66,13 @@
       waterService.getAllSystems()
         .then(response => {
           vm.systems = response;
-          vm.systems.push("CREATE NEW")
+          vm.systems.push("CREATE NEW");
         });
 
       waterService.getAllRigs()
         .then(response => {
           vm.rigs = response;
-          vm.rigs.push("CREATE NEW")
+          vm.rigs.push("CREATE NEW");
         });
 
       waterService.getAllTc()

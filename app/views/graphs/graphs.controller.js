@@ -30,19 +30,22 @@
           return response;
         })
         .then(systems => {
+          console.log(systems);
           systems.forEach(system => {
             waterService.getWaterMonthly(system)
               .then(response => {
-                vm.labels = response.map(month => {
-                  return month.Month;
-                });
                 let total = response.map(month => {
                   if (typeof month.Total != 'number') {
                     month.Total = Number(month.Total.replace(',',''));
                   }
-                  return month.Total;
+                  return {
+                    x: month.Month,
+                    y: month.Total
+                  }
+
                 });
                 vm.data.push(total);
+                vm.series.push(system);
               })
               .then(() => {
                 return waterService.getWaterDaily(system)
@@ -52,19 +55,18 @@
                       b = new Date(b.Day);
                       return a<b ? -1 : a>b ? 1 : 0;
                     });
-                    vm.labelsDaily = response.map(month => {
-                      return month.Day;
-                    });
                     let total = response.map(month => {
                       if (typeof month.Total != 'number') {
                         month.Total = Number(month.Total.replace(',',''));
                       }
-                      return month.Total;
+                      return {
+                        x: month.Day,
+                        y: month.Total
+                      };
                     });
                     vm.dailyData.push(total);
                   });
               });
-            vm.series.push(system);
           });
         })
         .then(() => {
@@ -152,10 +154,12 @@
           }];
           vm.optionsDaily = {
             scales: {
+              xAxes: [{
+                type: 'time',
+                position: 'bottom'
+              }],
               yAxes: [
                 {
-                  id: 'y-axis-1',
-                  type: 'linear',
                   display: true,
                   position: 'left',
                   ticks : {
@@ -178,19 +182,28 @@
               }
             },
             tooltips: {
+              mode: 'single',
+              shared: true,
               callbacks: {
                 label: function (tooltipItems, data) {
                   return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
                 }
               }
+            },
+            elements: {
+              point: {
+                hoverRadius: 3
+              }
             }
           };
           vm.optionsDailyStacked = {
             scales: {
+              xAxes: [{
+                type: 'time',
+                position: 'bottom'
+              }],
               yAxes: [
                 {
-                  id: 'y-axis-1',
-                  type: 'linear',
                   stacked: true,
                   display: true,
                   position: 'left',
@@ -215,19 +228,28 @@
               }
             },
             tooltips: {
+              mode: 'single',
+              shared: true,
               callbacks: {
                 label: function (tooltipItems, data) {
                   return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
                 }
               }
+            },
+            elements: {
+              point: {
+                hoverRadius: 3
+              }
             }
           };
           vm.options = {
             scales: {
+              xAxes: [{
+                type: 'time',
+                position: 'bottom'
+              }],
               yAxes: [
                 {
-                  id: 'y-axis-1',
-                  type: 'linear',
                   stacked: true,
                   display: true,
                   position: 'left',
@@ -252,19 +274,27 @@
               }
             },
             tooltips: {
+              mode: 'x',
               callbacks: {
                 label: function (tooltipItems, data) {
                   return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
                 }
               }
+            },
+            elements: {
+              point: {
+                hoverRadius: 3
+              }
             }
           };
           vm.optionsLine = {
             scales: {
+              xAxes: [{
+                type: 'time',
+                position: 'bottom'
+              }],
               yAxes: [
                 {
-                  id: 'y-axis-1',
-                  type: 'linear',
                   display: true,
                   position: 'left',
                   ticks : {
@@ -288,10 +318,16 @@
               }
             },
             tooltips: {
+              mode: 'x',
               callbacks: {
                 label: function (tooltipItems, data) {
                   return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
                 }
+              }
+            },
+            elements: {
+              point: {
+                hoverRadius: 3
               }
             }
           };

@@ -5,7 +5,7 @@
     .module('app')
     .controller('homeController', homeController);
 
-  function homeController($http, HomeService, $scope, $window, $state) {
+  function homeController($http, HomeService, waterService, $scope, $window, $state) {
     const vm = this;
     const {ipcRenderer} = require('electron');
     vm.newRigs;
@@ -52,6 +52,10 @@
         });
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
+        waterService.getAllSystems()
+          .then(response => {
+            waterService.allSystems = response;
+          });
       });
     };
 
@@ -87,7 +91,9 @@
                 }
               }
               if (key == 'WATER_SYSTEM') {
-                $window.location.reload();
+                // if (waterService.allSystems.indexOf(well.WATER_SYSTEM) == -1) {
+                //   waterService.allSystems.push(well.WATER_SYSTEM);
+                // }
               }
             }
             HomeService.updateWells(vm.newRigs[i].Wells[j]).then(response => {
@@ -97,6 +103,10 @@
         }
       }
       loadData();
+      waterService.getAllSystems()
+        .then(response => {
+          waterService.allSystems = response;
+        });
     };
 
     function updateTable(e, ui) {

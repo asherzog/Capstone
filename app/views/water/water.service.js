@@ -20,6 +20,7 @@
         });
     };
 
+    this.allSystems = [];
 
     this.getAllSystems = function() {
       return $http.get(`http://localhost:3000/allsystems`)

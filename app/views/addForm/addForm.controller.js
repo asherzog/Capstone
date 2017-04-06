@@ -5,7 +5,7 @@
     .module('app')
     .controller('addFormController', addFormController);
 
-  function addFormController($http, $state, waterService, HomeService) {
+  function addFormController($http, $state, waterService, HomeService, Upload, $window) {
     const vm = this;
     vm.$onInit = loadData;
     vm.createNewWell = createNewWell;
@@ -13,6 +13,8 @@
     vm.rigs;
     vm.tcs;
     vm.type = "Well";
+    vm.form = true;
+    vm.formData;
 
     function createNewWell() {
       if (vm.type == "Well") {
@@ -58,7 +60,38 @@
                 });
             });
         }
+      } else {
+        if (vm.newPost.file.$valid && vm.file) { //check if form is valid
+          let uploadObj = {
+            item: vm.type,
+            name: vm.name,
+            file: vm.file
+          };
+          upload(uploadObj); //call upload function
+        }
       }
+    }
+
+    function upload(fileObj) {
+      vm.form = false;
+      Upload.upload({
+        url: 'http://localhost:3000/upload',
+        data: fileObj
+      }).then(function (response) {
+        let data = response.data;
+        vm.formData = data.data;
+        // $http.get('http://localhost:3000/testing')
+        //   .then(response => {
+        //     console.log(response.data);
+        //   })
+        if (data.type == "Type Curve") {
+          console.log(vm.formData);
+        }
+      });
+    }
+
+    vm.confirmDetails = function() {
+      console.log(vm.formData);
     }
 
 

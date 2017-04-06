@@ -114,9 +114,8 @@
       let rigArr = ui.item.sortable.droptargetModel;
       let dropIndex = ui.item.sortable.dropindex;
       rigArr[dropIndex].COMPLETION = null;
-
-      if (rigArr[0].RIG == "Rig 1" && rigArr[1].RIG == "Rig 1" || rigArr[1].RIG == "Rig 1" && rigArr[2].RIG == "Rig 1") {
-        rigArr[dropIndex].RIG = "Rig 1";
+      if (dropIndex != 0) {
+        rigArr[dropIndex].RIG = rigArr[0].RIG;
         for (var i = dropIndex; i < rigArr.length; i++) {
           if (i > 0) {
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
@@ -125,14 +124,13 @@
         }
         vm.newRigs[0].Wells = rigArr;
       } else {
-        rigArr[dropIndex].RIG = "Rig 2";
+        rigArr[dropIndex].RIG = rigArr[1].RIG;
         for (var i = dropIndex; i < rigArr.length; i++) {
           if (i > 0) {
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
         }
-        vm.newRigs[1].Wells = rigArr;
       }
     };
 

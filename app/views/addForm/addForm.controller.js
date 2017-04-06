@@ -5,7 +5,7 @@
     .module('app')
     .controller('addFormController', addFormController);
 
-  function addFormController($http, $state, waterService, HomeService, Upload, $window) {
+  function addFormController($http, $state, waterService, HomeService, Upload) {
     const vm = this;
     vm.$onInit = loadData;
     vm.createNewWell = createNewWell;
@@ -78,21 +78,46 @@
         url: 'http://localhost:3000/upload',
         data: fileObj
       }).then(function (response) {
-        let data = response.data;
-        vm.formData = data.data;
-        // $http.get('http://localhost:3000/testing')
-        //   .then(response => {
-        //     console.log(response.data);
-        //   })
-        if (data.type == "Type Curve") {
-          console.log(vm.formData);
-        }
+        vm.formData = response.data;
       });
     }
 
     vm.confirmDetails = function() {
-      console.log(vm.formData);
-    }
+      if (vm.formData.type == 'Type Curve') {
+        let newTypeCurve = {
+          Days: vm.tcDays,
+          Oil: vm.tcOil,
+          Water: vm.tcWater,
+          Total_Liq: vm.tcTotal
+        };
+        console.log(newTypeCurve);
+
+        $http.post('http://localhost:3000/uploadUpdate', newTypeCurve)
+          .then(response => {
+            console.log(response);
+            $state.go('home', {}, {reload: true});
+          });
+      } else {
+        let newPdp = {
+          PROPNUM: vm.pdpPropNum,
+          SCENARIO: vm.pdpScenario,
+          LEASE: vm.pdpLease,
+          API: vm.pdpApi,
+          OUTDATE: vm.pdpDate,
+          Gross_Oil_Bbls: vm.pdpOil,
+          Gross_Water_Bbls: vm.pdpWater,
+          Gross_Gas_Mcf: vm.pdpGas,
+          Water_System: vm.pdpSystem
+        };
+        console.log(newPdp);
+
+        $http.post('http://localhost:3000/uploadUpdate', newPdp)
+          .then(response => {
+            console.log(response);
+            $state.go('home', {}, {reload: true});
+          });
+      }
+    };
 
 
     function loadData() {

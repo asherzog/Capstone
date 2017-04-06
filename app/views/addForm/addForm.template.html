@@ -53,70 +53,82 @@
 <section class="container formWrapper" ng-show="!$ctrl.form">
   <form name="$ctrl.details" novalidate ng-submit="$ctrl.confirmDetails()">
     <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
-      <label for="days">Which column points to days?</label>
+      <label for="days">Which column points to <b>Days</b>?</label>
       <select class="form-control" id="days" ng-model="$ctrl.tcDays" required="true" name="days">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
-      <label for="water">Which column points to water output?</label>
+      <label for="water">Which column points to <b>Water Output</b>?</label>
       <select class="form-control" id="water" ng-model="$ctrl.tcWater" required="true" name="water">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
-      <label for="oil">Which column points to oil output?</label>
+      <label for="oil">Which column points to <b>Oil Output</b>?</label>
       <select class="form-control" id="oil" ng-model="$ctrl.tcOil" required="true" name="oil">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
-      <label for="total">Which column points to total output?</label>
+      <label for="total">Which column points to <b>Total Output</b>?</label>
       <select class="form-control" id="total" ng-model="$ctrl.tcTotal" required="true" name="total">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
 
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="date">Which column points to Out Date?</label>
+      <label for="date">Which column points to <b>Out Date</b>?</label>
       <select class="form-control" id="date" ng-model="$ctrl.pdpDate" required="true" name="date">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="propNum">Which column points to Prop Num?</label>
+      <label for="propNum">Which column points to <b>Prop Num</b>?</label>
       <select class="form-control" id="propNum" ng-model="$ctrl.pdpPropNum" required="true" name="propNum">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="lease">Which column points to Lease?</label>
+      <label for="scenario">Which column points to <b>Scenario</b>?</label>
+      <select class="form-control" id="scenario" ng-model="$ctrl.pdpScenario" required="true" name="scenario">
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+      </select>
+    </div>
+    <div class="form-group" ng-show="$ctrl.type == 'PDP'">
+      <label for="lease">Which column points to <b>Lease</b>?</label>
       <select class="form-control" id="lease" ng-model="$ctrl.pdpLease" required="true" name="lease">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="water">Which column points to Gross Water Output?</label>
+      <label for="Api">Which column points to <b>API</b>?</label>
+      <select class="form-control" id="Api" ng-model="$ctrl.pdpApi" required="true" name="Api">
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+      </select>
+    </div>
+    <div class="form-group" ng-show="$ctrl.type == 'PDP'">
+      <label for="water">Which column points to <b>Gross Water Output</b>?</label>
       <select class="form-control" id="water" ng-model="$ctrl.pdpWater" required="true" name="water">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="oil">Which column points to Gross Oil Output?</label>
+      <label for="oil">Which column points to <b>Gross Oil Output</b>?</label>
       <select class="form-control" id="oil" ng-model="$ctrl.pdpOil" required="true" name="oil">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="gas">Which column points to Gross Gas Output?</label>
+      <label for="gas">Which column points to <b>Gross Gas Output</b>?</label>
       <select class="form-control" id="gas" ng-model="$ctrl.pdpGas" required="true" name="gas">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="system">Which column points to Water System?</label>
+      <label for="system">Which column points to <b>Water System</b>?</label>
       <select class="form-control" id="system" ng-model="$ctrl.pdpSystem" required="true" name="system">
-        <option ng-repeat="option in $ctrl.formData">{{option}}</option>
+        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
       </select>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>

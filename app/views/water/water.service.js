@@ -7,14 +7,14 @@
 
   function service($http, HomeService) {
     this.getWaterMonthly = function(system) {
-      return $http.get(`http://localhost:3000/waterSystem/${system}`)
+      return $http.get(`http://localhost:3000/waterSystem/monthly/${system}`)
         .then(response => {
           return response.data;
         });
     };
 
     this.getWaterDaily = function(system) {
-      return $http.get(`http://localhost:3000/waterSystemDaily/${system}`)
+      return $http.get(`http://localhost:3000/waterSystem/daily/${system}`)
         .then(response => {
           return response.data;
         });
@@ -87,7 +87,7 @@
     };
 
     this.getPdpWells = function(system) {
-      return $http.get(`http://localhost:3000/pdpwells/${system}`)
+      return $http.get(`http://localhost:3000/pdp/wells/${system}`)
         .then(response => {
           return response.data;
         });

@@ -90,11 +90,6 @@
                   });
                 }
               }
-              if (key == 'WATER_SYSTEM') {
-                // if (waterService.allSystems.indexOf(well.WATER_SYSTEM) == -1) {
-                //   waterService.allSystems.push(well.WATER_SYSTEM);
-                // }
-              }
             }
             HomeService.updateWells(vm.newRigs[i].Wells[j]).then(response => {
               console.log(response);

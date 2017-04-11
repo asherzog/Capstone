@@ -17,7 +17,7 @@
 
     function loadData() {
 
-      $http.get(`http://localhost:3000/waterSystemDaily/${system}`)
+      $http.get(`http://localhost:3000/waterSystem/daily/${system}`)
         .then(response => {
           vm.same = response.data;
         });

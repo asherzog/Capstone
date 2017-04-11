@@ -11,7 +11,7 @@
     vm.$onInit = loadData;
 
     function loadData() {
-      $http.get(`http://localhost:3000/waterSystem/${system}`)
+      $http.get(`http://localhost:3000/waterSystem/monthly/${system}`)
         .then(response => {
           vm.same = response.data;
         });

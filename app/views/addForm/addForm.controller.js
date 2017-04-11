@@ -92,7 +92,7 @@
         };
         console.log(newTypeCurve);
 
-        $http.post('http://localhost:3000/uploadUpdate', newTypeCurve)
+        $http.post('http://localhost:3000/upload/update', newTypeCurve)
           .then(response => {
             console.log(response);
             $state.go('home', {}, {reload: true});
@@ -111,7 +111,7 @@
         };
         console.log(newPdp);
 
-        $http.post('http://localhost:3000/uploadUpdate', newPdp)
+        $http.post('http://localhost:3000/upload/update', newPdp)
           .then(response => {
             console.log(response);
             $state.go('home', {}, {reload: true});

@@ -28,6 +28,16 @@
         url: '/add',
         component: 'addForm'
       })
+      .state({
+        name: 'tc',
+        url: '/tc',
+        component: 'tc'
+      })
+      .state({
+        name: 'pdp',
+        url: '/pdp',
+        component: 'pdp'
+      })
     $urlRouterProvider.otherwise('/');
   }
 }());

@@ -43,6 +43,12 @@
         });
     };
 
+    this.getAllPdp = function() {
+      return $http.get(`http://localhost:3000/allpdp`)
+        .then(response => {
+          return response.data;
+        });
+    };
 
     this.getWaterSystem = function(name) {
       return $http.get(`http://localhost:3000/water/${name}`)
@@ -65,11 +71,22 @@
               response.data.forEach(month => {
                 month._id.Date = HomeService.convertDate(month._id.Date, 0);
               });
-              response.data.sort( function(c,d){
-                var rx = /(\d+)\/(\d+)\/(\d+)/;
-                var a = Number(c._id.Date.replace(rx, '$3$1$20000'));
-                var b = Number(d._id.Date.replace(rx, '$3$1$20000'));
-                return a < b ? -1 : a == b ? 0 : 1;
+              response.data.sort(function(a, b) {
+                a = new Date(a._id.Date);
+                b = new Date(b._id.Date);
+                return a<b ? -1 : a>b ? 1 : 0;
+              });
+              return response.data;
+            });
+    };
+
+    this.getPdpByName = function(name) {
+      return $http.get(`http://localhost:3000/pdp/lease/${name}`)
+            .then((response) => {
+              response.data.sort(function(a, b) {
+                a = new Date(a.OUTDATE);
+                b = new Date(b.OUTDATE);
+                return a<b ? -1 : a>b ? 1 : 0;
               });
               return response.data;
             });

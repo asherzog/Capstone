@@ -8,7 +8,6 @@
   function tcController($http, HomeService, waterService, $scope, $window, $state) {
     const vm = this;
     const {ipcRenderer} = require('electron');
-    vm.btnText = true;
     vm.$onInit = loadTcs;
     vm.tcs;
     vm.data;
@@ -57,12 +56,7 @@
           return vm.tc;
         })
         .then(tc => {
-          waterService.getTc(tc)
-            .then(response => {
-              vm.data = response[0].data;
-              vm.keys = Object.keys(response[0].data[0]);
-              return vm.data;
-            });
+          vm.selection(tc);
         });
     }
 

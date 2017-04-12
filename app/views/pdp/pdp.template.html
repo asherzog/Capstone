@@ -1,33 +1,32 @@
-<section class="home">
+<section class=" home container">
   <div class="text-center">
-    <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
+    <div class="selectBox">
+      <select class="form-control" id="pdps" ng-model="$ctrl.pdp" name="pdp" ng-change="$ctrl.selection($ctrl.pdp)">
+        <option ng-repeat="pdp in $ctrl.pdps">{{pdp}}</option>
+      </select>
+    </div>
+    <button class="btn btn-success" ui-sref="addForm">
       Create
     </button>
-    <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
+    <button class="btn btn-warning" ng-click=" $ctrl.btnText = !$ctrl.btnText; pdp.editing[key] = !pdp.editing[key]" >
       {{$ctrl.btnText ? 'Edit' : 'Save'}}
     </button>
-    <button class="btn btn-primary" ng-click="$ctrl.printer()">
-      Print
+    <button class="btn btn-danger" ng-click="$ctrl.deletePdp()" ng-disabled="$ctrl.pdps.length < 2">
+      Delete
     </button>
   </div>
-  <div ng-repeat="rig in $ctrl.newRigs" id="table">
-    <table class="table table-sm table-bordered" ng-class="$ctrl.printing">
+  <div>
+    <table class="table table-bordered">
       <thead class="table-info">
         <tr>
-          <th ng-hide="!$ctrl.options.disabled">Delete</th>
-          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'">{{key}}</th>
+          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id' || key == 'undefined'">{{key}}</th>
         </tr>
       </thead>
-      <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
-        <tr ng-repeat="well in rig.Wells">
-          <td ng-hide="!$ctrl.options.disabled">
-            <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
-              x
-            </button>
-          </td>
-          <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''">
-          <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
-          <p ng-if="!well.editing[key]">
+      <tbody>
+        <tr ng-repeat="pdp in $ctrl.data">
+          <td ng-repeat="(key, value) in pdp" ng-hide="key == '_id' || key == 'undefined'" ng-click="!$ctrl.btnText ? pdp.editing[key] = true : ''">
+          <input ng-if="pdp.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(pdp, pdp[key], pdp.editing)" ng-model="pdp[key]">
+          <p ng-if="!pdp.editing[key]">
             {{value}}
           </p>
           </td>

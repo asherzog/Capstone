@@ -50,6 +50,11 @@ nav .container {
   width: 30%;
 }
 
+.selectBox {
+  margin-left: 2em;
+  width: 15%;
+}
+
 .waterHeadline {
   font-size: 3em;
   font-weight: 600;

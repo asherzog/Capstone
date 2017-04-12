@@ -1,0 +1,38 @@
+<section class="home container">
+  <div class="text-center">
+    <div class="selectBox">
+      <select class="form-control" id="tcs" ng-model="$ctrl.tc" name="tc" ng-change="$ctrl.selection($ctrl.tc)">
+        <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
+      </select>
+    </div>
+    <button class="btn btn-warning" ng-click="$ctrl.btnText = !$ctrl.btnText" >
+      {{$ctrl.btnText ? 'Edit' : 'Save'}}
+    </button>
+    <button class="btn btn-danger" ng-click="$ctrl.deleteTc()" ng-disabled="$ctrl.tcs.length < 2">
+      Delete
+    </button>
+  </div>
+  <table class="table table-bordered" ng-class="$ctrl.printing">
+    <thead class="table-info">
+      <tr>
+        <th ng-hide="!$ctrl.options.disabled">Delete</th>
+        <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id' || key == 'undefined' || key == 'TC'">{{key}}</th>
+      </tr>
+    </thead>
+    <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">
+      <tr ng-repeat="day in $ctrl.data | limitTo:$ctrl.displayed">
+        <td ng-hide="!$ctrl.options.disabled">
+          <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
+            x
+          </button>
+        </td>
+        <td ng-repeat="(key, value) in day" ng-hide="key == '_id' || key == 'undefined' || key == 'TC'" ng-click="!$ctrl.btnText ? well.editing[key] = true : ''">
+        <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
+        <p ng-if="!well.editing[key]">
+          {{value.toFixed(0)}}
+        </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

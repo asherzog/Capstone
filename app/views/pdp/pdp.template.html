@@ -1,0 +1,38 @@
+<section class="home">
+  <div class="text-center">
+    <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
+      Create
+    </button>
+    <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
+      {{$ctrl.btnText ? 'Edit' : 'Save'}}
+    </button>
+    <button class="btn btn-primary" ng-click="$ctrl.printer()">
+      Print
+    </button>
+  </div>
+  <div ng-repeat="rig in $ctrl.newRigs" id="table">
+    <table class="table table-sm table-bordered" ng-class="$ctrl.printing">
+      <thead class="table-info">
+        <tr>
+          <th ng-hide="!$ctrl.options.disabled">Delete</th>
+          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'">{{key}}</th>
+        </tr>
+      </thead>
+      <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
+        <tr ng-repeat="well in rig.Wells">
+          <td ng-hide="!$ctrl.options.disabled">
+            <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
+              x
+            </button>
+          </td>
+          <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''">
+          <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
+          <p ng-if="!well.editing[key]">
+            {{value}}
+          </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -75,8 +75,8 @@
             });
     };
 
-    this.getTc = function(number) {
-      return $http.get(`http://localhost:3000/${number}`)
+    this.getTc = function(name) {
+      return $http.get(`http://localhost:3000/tc/${name}`)
             .then((response) => {
               return response.data;
             });

@@ -26,6 +26,11 @@
     function loadData() {
       waterService.getWaterMonthly(system)
         .then(response => {
+          response = response.sort(function(a, b) {
+            a = new Date(a.Month);
+            b = new Date(b.Month);
+            return a<b ? -1 : a>b ? 1 : 0;
+          });
           vm.labels = response.map(month => {
             return month.Month;
           });

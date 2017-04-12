@@ -30,10 +30,14 @@
           return response;
         })
         .then(systems => {
-          console.log(systems);
           systems.forEach(system => {
             waterService.getWaterMonthly(system)
               .then(response => {
+                response = response.sort(function(a, b) {
+                  a = new Date(a.Month);
+                  b = new Date(b.Month);
+                  return a<b ? -1 : a>b ? 1 : 0;
+                });
                 let total = response.map(month => {
                   if (typeof month.Total != 'number') {
                     month.Total = Number(month.Total.replace(',',''));

@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('app', ['ui.router', 'ui.sortable', 'chart.js', 'ngFileUpload']);
+    .module('app', ['ui.router', 'ui.sortable', 'chart.js', 'ngFileUpload','infinite-scroll']);
 
 }());

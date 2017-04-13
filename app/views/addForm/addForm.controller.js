@@ -21,6 +21,7 @@
         let well = {
           RIG: vm.rig,
           WELL: vm.name,
+          NRI: vm.nri,
           TYPE_CURVE: vm.tc,
           WATER_SYSTEM: vm.system,
           SPUD_SPUD: vm.spudSpud,
@@ -88,7 +89,8 @@
           Days: vm.tcDays,
           Oil: vm.tcOil,
           Water: vm.tcWater,
-          Total_Liq: vm.tcTotal
+          Gas: vm.tcGas,
+          // Total_Liq: vm.tcTotal
         };
         console.log(newTypeCurve);
 
@@ -99,14 +101,17 @@
           });
       } else {
         let newPdp = {
-          PROPNUM: vm.pdpPropNum,
-          SCENARIO: vm.pdpScenario,
+          // PROPNUM: vm.pdpPropNum,
+          // SCENARIO: vm.pdpScenario,
           LEASE: vm.pdpLease,
-          API: vm.pdpApi,
+          // API: vm.pdpApi,
           OUTDATE: vm.pdpDate,
           Gross_Oil_Bbls: vm.pdpOil,
           Gross_Water_Bbls: vm.pdpWater,
           Gross_Gas_Mcf: vm.pdpGas,
+          Net_Oil_Bbls: vm.pdpOilNet,
+          Net_Water_Bbls: vm.pdpWaterNet,
+          Net_Gas_Mcf: vm.pdpGasNet,
           Water_System: vm.pdpSystem
         };
         console.log(newPdp);

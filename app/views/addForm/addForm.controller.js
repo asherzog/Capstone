@@ -68,18 +68,35 @@
             name: vm.name,
             file: vm.file
           };
-          upload(uploadObj); //call upload function
+          upload(uploadObj, 'upload', false); //call upload function
         }
       }
     }
 
-    function upload(fileObj) {
-      vm.form = false;
-      Upload.upload({
-        url: 'http://localhost:3000/upload',
+    vm.bulkLoad = function() {
+      if (vm.bulk.bulkFile.$valid && vm.bulkFile) { //check if form is valid
+        let uploadObj = {
+          item: vm.type,
+          file: vm.bulkFile
+        };
+        upload(uploadObj, `upload/wells`, true) //call upload function
+          .then((data) => {
+            console.log(data);
+            // setTimeout(() => {
+            //   $state.go('home', {}, {reload: true});
+            // },3000);
+          });
+      }
+    };
+
+    function upload(fileObj, url, bool) {
+      vm.form = bool;
+      return Upload.upload({
+        url: `http://localhost:3000/${url}`,
         data: fileObj
       }).then(function (response) {
         vm.formData = response.data;
+        return vm.formData;
       });
     }
 

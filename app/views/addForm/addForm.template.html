@@ -6,159 +6,173 @@
     <input type="radio" ng-model="$ctrl.type" id="addType" name="addType" value="PDP"> PDP
   </div>
 </div>
-<section class="container formWrapper" ng-show="$ctrl.form">
-  <form name="$ctrl.newPost" novalidate ng-submit="$ctrl.createNewWell()">
-    <div class="form-group">
-      <label for="wellName">{{$ctrl.type}} Name <span ng-show="!$ctrl.newPost.name.$valid" style="color: red">*</span></label>
-      <input type="text" name="name" class="form-control" id="wellName" ng-model="$ctrl.name" required="true">
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="waterSystem">Water System <span ng-show="!$ctrl.newPost.system.$valid" style="color: red">*</span>
-      <span ng-if="$ctrl.system == 'CREATE NEW' && !$ctrl.newPost.newSystem.$valid" style="color: red">*</span></label>
-      <select class="form-control" id="waterSystem" ng-model="$ctrl.system" required="true" name="system">
-        <option ng-repeat="system in $ctrl.systems">{{system}}</option>
-        <input type="text" class="form-control" ng-if="$ctrl.system == 'CREATE NEW'" ng-model="$ctrl.newSystem" name="newSystem" ng-require="$ctrl.system == 'CREATE NEW'">
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="rig">Rig <span ng-show="!$ctrl.newPost.rig.$valid" style="color: red">*</span>
-      <span ng-if="$ctrl.rig == 'CREATE NEW' && !$ctrl.newPost.newRig.$valid" style="color: red">*</span></label>
-      <select class="form-control" id="rig" ng-model="$ctrl.rig" required="true" name="rig">
-        <option ng-repeat="rig in $ctrl.rigs">{{rig}}</option>
-        <input type="text" class="form-control" ng-show="$ctrl.rig == 'CREATE NEW'" ng-model="$ctrl.newRig" name="newRig" ng-require="$ctrl.rig == 'CREATE NEW'">
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="typeCurve">Type Curve <span ng-show="!$ctrl.newPost.tc.$valid" style="color: red">*</span></label>
-      <select class="form-control" id="typeCurve" ng-model="$ctrl.tc" required="true" name="tc">
-        <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="nri">NRI <span ng-show="!$ctrl.newPost.nri.$valid" style="color: red">*</span></label>
-      <input type="text" class="form-control" id="nri" ng-model="$ctrl.nri" required="true" name="nri">
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="spudSpud">Spud-Spud <span ng-show="!$ctrl.newPost.spudSpud.$valid" style="color: red">*</span></label>
-      <input type="text" class="form-control" id="spudSpud" ng-model="$ctrl.spudSpud" required="true" name="spudSpud">
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Well'">
-      <label for="spud">Spud </label>
-      <input type="date" class="form-control" id="spud" ng-model="$ctrl.spud" name="spud">
-    </div>
-    <div class="form-group" ng-if="$ctrl.type != 'Well'">
-      <label for="upload"> Upload New {{$ctrl.type}}</label>
-      <input type="file" ngf-select ng-model="$ctrl.file" name="file" id="upload" required="true">
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</section>
+<div style="display: flex">
+  <section class="container formWrapper" ng-show="$ctrl.form">
+    <form name="$ctrl.newPost" novalidate ng-submit="$ctrl.createNewWell()">
+      <div class="form-group">
+        <label for="wellName">{{$ctrl.type}} Name <span ng-show="!$ctrl.newPost.name.$valid" style="color: red">*</span></label>
+        <input type="text" name="name" class="form-control" id="wellName" ng-model="$ctrl.name" required="true">
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="waterSystem">Water System <span ng-show="!$ctrl.newPost.system.$valid" style="color: red">*</span>
+        <span ng-if="$ctrl.system == 'CREATE NEW' && !$ctrl.newPost.newSystem.$valid" style="color: red">*</span></label>
+        <select class="form-control" id="waterSystem" ng-model="$ctrl.system" required="true" name="system">
+          <option ng-repeat="system in $ctrl.systems">{{system}}</option>
+          <input type="text" class="form-control" ng-if="$ctrl.system == 'CREATE NEW'" ng-model="$ctrl.newSystem" name="newSystem" ng-require="$ctrl.system == 'CREATE NEW'">
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="rig">Rig <span ng-show="!$ctrl.newPost.rig.$valid" style="color: red">*</span>
+        <span ng-if="$ctrl.rig == 'CREATE NEW' && !$ctrl.newPost.newRig.$valid" style="color: red">*</span></label>
+        <select class="form-control" id="rig" ng-model="$ctrl.rig" required="true" name="rig">
+          <option ng-repeat="rig in $ctrl.rigs">{{rig}}</option>
+          <input type="text" class="form-control" ng-show="$ctrl.rig == 'CREATE NEW'" ng-model="$ctrl.newRig" name="newRig" ng-require="$ctrl.rig == 'CREATE NEW'">
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="typeCurve">Type Curve <span ng-show="!$ctrl.newPost.tc.$valid" style="color: red">*</span></label>
+        <select class="form-control" id="typeCurve" ng-model="$ctrl.tc" required="true" name="tc">
+          <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="nri">NRI <span ng-show="!$ctrl.newPost.nri.$valid" style="color: red">*</span></label>
+        <input type="text" class="form-control" id="nri" ng-model="$ctrl.nri" required="true" name="nri">
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="spudSpud">Spud-Spud <span ng-show="!$ctrl.newPost.spudSpud.$valid" style="color: red">*</span></label>
+        <input type="text" class="form-control" id="spudSpud" ng-model="$ctrl.spudSpud" required="true" name="spudSpud">
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Well'">
+        <label for="spud">Spud </label>
+        <input type="date" class="form-control" id="spud" ng-model="$ctrl.spud" name="spud">
+      </div>
+      <div class="form-group" ng-if="$ctrl.type != 'Well'">
+        <label for="upload"> Upload New {{$ctrl.type}}</label>
+        <input type="file" ngf-select ng-model="$ctrl.file" name="file" id="upload" required="true">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </section>
 
-<section class="container formWrapper" ng-if="!$ctrl.form">
-  <form name="$ctrl.details" novalidate ng-submit="$ctrl.confirmDetails()">
-    <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
-      <label for="days">Which column points to <b>Days</b>?</label>
-      <select class="form-control" id="days" ng-model="$ctrl.tcDays" required="true" name="days">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
-      <label for="water">Which column points to <b>Water Output</b>?</label>
-      <select class="form-control" id="water" ng-model="$ctrl.tcWater" required="true" name="water">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
-      <label for="oil">Which column points to <b>Oil Output</b>?</label>
-      <select class="form-control" id="oil" ng-model="$ctrl.tcOil" required="true" name="oil">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
-      <label for="Gas">Which column points to <b>Gas Output</b>?</label>
-      <select class="form-control" id="Gas" ng-model="$ctrl.tcGas" required="true" name="Gas">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <!-- <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
-      <label for="total">Which column points to <b>Total Output</b>?</label>
-      <select class="form-control" id="total" ng-model="$ctrl.tcTotal" required="true" name="total">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div> -->
+  <section class="container formWrapper" ng-if="!$ctrl.form">
+    <form name="$ctrl.details" novalidate ng-submit="$ctrl.confirmDetails()">
+      <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
+        <label for="days">Which column points to <b>Days</b>?</label>
+        <select class="form-control" id="days" ng-model="$ctrl.tcDays" required="true" name="days">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
+        <label for="water">Which column points to <b>Water Output</b>?</label>
+        <select class="form-control" id="water" ng-model="$ctrl.tcWater" required="true" name="water">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
+        <label for="oil">Which column points to <b>Oil Output</b>?</label>
+        <select class="form-control" id="oil" ng-model="$ctrl.tcOil" required="true" name="oil">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'Type Curve'">
+        <label for="Gas">Which column points to <b>Gas Output</b>?</label>
+        <select class="form-control" id="Gas" ng-model="$ctrl.tcGas" required="true" name="Gas">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <!-- <div class="form-group" ng-show="$ctrl.type == 'Type Curve'">
+        <label for="total">Which column points to <b>Total Output</b>?</label>
+        <select class="form-control" id="total" ng-model="$ctrl.tcTotal" required="true" name="total">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div> -->
 
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="lease">Which column points to <b>Lease Name</b>?</label>
-      <select class="form-control" id="lease" ng-model="$ctrl.pdpLease" required="true" name="lease">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="date">Which column points to <b>Date</b>?</label>
-      <select class="form-control" id="date" ng-model="$ctrl.pdpDate" required="true" name="date">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="oil">Which column points to <b>Gross Oil</b>?</label>
-      <select class="form-control" id="oil" ng-model="$ctrl.pdpOil" required="true" name="oil">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="water">Which column points to <b>Gross Water</b>?</label>
-      <select class="form-control" id="water" ng-model="$ctrl.pdpWater" required="true" name="water">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="gas">Which column points to <b>Gross Gas</b>?</label>
-      <select class="form-control" id="gas" ng-model="$ctrl.pdpGas" required="true" name="gas">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="oilNet">Which column points to <b>Net Oil</b>?</label>
-      <select class="form-control" id="oilNet" ng-model="$ctrl.pdpOilNet" required="true" name="oilNet">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="waterNet">Which column points to <b>Net Water</b>?</label>
-      <select class="form-control" id="waterNet" ng-model="$ctrl.pdpWaterNet" required="true" name="waterNet">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="gasNet">Which column points to <b>Net Gas</b>?</label>
-      <select class="form-control" id="gasNet" ng-model="$ctrl.pdpGasNet" required="true" name="gasNet">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-      <label for="system">Which column points to <b>Water System</b>?</label>
-      <select class="form-control" id="system" ng-model="$ctrl.pdpSystem" required="true" name="system">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <!-- <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="propNum">Which column points to <b>Prop Num</b>?</label>
-      <select class="form-control" id="propNum" ng-model="$ctrl.pdpPropNum" required="true" name="propNum">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="scenario">Which column points to <b>Scenario</b>?</label>
-      <select class="form-control" id="scenario" ng-model="$ctrl.pdpScenario" required="true" name="scenario">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div>
-    <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-      <label for="Api">Which column points to <b>API</b>?</label>
-      <select class="form-control" id="Api" ng-model="$ctrl.pdpApi" required="true" name="Api">
-        <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-      </select>
-    </div> -->
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</section>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="lease">Which column points to <b>Lease Name</b>?</label>
+        <select class="form-control" id="lease" ng-model="$ctrl.pdpLease" required="true" name="lease">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="date">Which column points to <b>Date</b>?</label>
+        <select class="form-control" id="date" ng-model="$ctrl.pdpDate" required="true" name="date">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="oil">Which column points to <b>Gross Oil</b>?</label>
+        <select class="form-control" id="oil" ng-model="$ctrl.pdpOil" required="true" name="oil">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="water">Which column points to <b>Gross Water</b>?</label>
+        <select class="form-control" id="water" ng-model="$ctrl.pdpWater" required="true" name="water">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="gas">Which column points to <b>Gross Gas</b>?</label>
+        <select class="form-control" id="gas" ng-model="$ctrl.pdpGas" required="true" name="gas">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="oilNet">Which column points to <b>Net Oil</b>?</label>
+        <select class="form-control" id="oilNet" ng-model="$ctrl.pdpOilNet" required="true" name="oilNet">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="waterNet">Which column points to <b>Net Water</b>?</label>
+        <select class="form-control" id="waterNet" ng-model="$ctrl.pdpWaterNet" required="true" name="waterNet">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="gasNet">Which column points to <b>Net Gas</b>?</label>
+        <select class="form-control" id="gasNet" ng-model="$ctrl.pdpGasNet" required="true" name="gasNet">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
+        <label for="system">Which column points to <b>Water System</b>?</label>
+        <select class="form-control" id="system" ng-model="$ctrl.pdpSystem" required="true" name="system">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <!-- <div class="form-group" ng-show="$ctrl.type == 'PDP'">
+        <label for="propNum">Which column points to <b>Prop Num</b>?</label>
+        <select class="form-control" id="propNum" ng-model="$ctrl.pdpPropNum" required="true" name="propNum">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-show="$ctrl.type == 'PDP'">
+        <label for="scenario">Which column points to <b>Scenario</b>?</label>
+        <select class="form-control" id="scenario" ng-model="$ctrl.pdpScenario" required="true" name="scenario">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div>
+      <div class="form-group" ng-show="$ctrl.type == 'PDP'">
+        <label for="Api">Which column points to <b>API</b>?</label>
+        <select class="form-control" id="Api" ng-model="$ctrl.pdpApi" required="true" name="Api">
+          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
+        </select>
+      </div> -->
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </section>
+
+  <h2 style="margin-top: 2em" ng-if="$ctrl.type == 'Well'">OR</h2>
+
+  <section class="container formWrapper" ng-if="$ctrl.type == 'Well'" style="margin-top: 4em">
+    <form name="$ctrl.bulk" novalidate ng-submit="$ctrl.bulkLoad()">
+      <div class="form-group">
+        <label for="uploadBulk"><strong>Upload Bulk {{$ctrl.type}}</strong></label>
+        <input type="file" ngf-select ng-model="$ctrl.bulkFile" name="bulkFile" id="uploadBulk" required="true">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </section>
+</div>

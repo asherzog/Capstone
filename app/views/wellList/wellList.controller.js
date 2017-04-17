@@ -12,22 +12,22 @@
 
     vm.orderFunction = function(well) {
       if (well.Completion == 'PDP') {
-        return new Date('10/10/2050')
+        return new Date('10/10/2050');
       }
-      return new Date(well.Completion);
+      return new Date(well.First_Production);
     };
 
 
     waterService.getWaterSystem(system)
       .then(response => {
         vm.newWells = response.map(well => {
-          if (!well.COMPLETION) {
-            well.COMPLETION = HomeService.convertDate(well.SPUD, 60);
+          if (!well.First_Production) {
+            well.First_Production = HomeService.convertDate(well.SPUD, 67);
           }
           vm.wells.push({
             Well: well.WELL,
             Type: well.TYPE_CURVE,
-            Completion: well.COMPLETION
+            First_Production: well.First_Production
           });
           return well.WELL;
         });

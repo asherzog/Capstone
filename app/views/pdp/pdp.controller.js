@@ -21,19 +21,7 @@
     vm.selection = function(name) {
       waterService.getPdpByName(vm.pdp)
         .then(results => {
-          vm.data = results.map(pdp => {
-            return {
-              "PROPNUM": pdp.PROPNUM,
-              "SCENARIO": pdp["SCENARIO"],
-              "LEASE": pdp["LEASE"],
-              "API": pdp["API"],
-              "OUTDATE": pdp["OUTDATE"],
-              "Gross_Oil_Bbls": pdp["Gross_Oil_Bbls"],
-              "Gross_Water_Bbls": pdp["Gross_Water_Bbls"],
-              "Gross_Gas_Mcf": pdp["Gross_Gas_Mcf"],
-              "Water_System": pdp["Water_System"]
-            };
-          });
+          vm.data = results
           vm.keys = Object.keys(results[0]);
         });
     };

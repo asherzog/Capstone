@@ -26,7 +26,6 @@
     function loadData() {
       waterService.getWaterMonthly(system)
         .then(response => {
-          console.log(response);
           response = response.sort(function(a, b) {
             a = new Date(a.Month);
             b = new Date(b.Month);

@@ -107,9 +107,8 @@
           Oil: vm.tcOil,
           Water: vm.tcWater,
           Gas: vm.tcGas,
-          // Total_Liq: vm.tcTotal
+          Total_Liq: 'Total_Liq'
         };
-        console.log(newTypeCurve);
 
         $http.post('http://localhost:3000/upload/update', newTypeCurve)
           .then(response => {

@@ -5,7 +5,7 @@
     .module('app')
     .controller('monthlyGraphController', monthlyGraphController);
 
-  function monthlyGraphController($http, $state, waterService, HomeService) {
+  function monthlyGraphController($http, $state, waterService) {
     const vm = this;
     let system = $state.params.water;
     vm.system = system;

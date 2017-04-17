@@ -38,6 +38,11 @@
         url: '/pdp',
         component: 'pdp'
       })
+      .state({
+        name: 'production',
+        url: '/production/{type:string}',
+        component: 'production'
+      })
     $urlRouterProvider.otherwise('/');
   }
 }());

@@ -1,3 +1,88 @@
 <section class="container">
-  <h1>hello from {{$ctrl.type}} production</h1>
+  <section class="container" style="margin: 3em 0 5em 0">
+    <div class="graph">
+      <div class="text-center">
+        <h3>Monthly {{$ctrl.type}} BOE</h3>
+      </div>
+      <canvas id="line" class="chart chart-line" chart-data="$ctrl.monthlyBoe"
+        chart-series="$ctrl.seriesBOE" chart-options="$ctrl.options"
+        chart-colors="$ctrl.colors">
+      </canvas>
+      <div class="text-center">
+        <h3>Daily {{$ctrl.type}} BOE</h3>
+      </div>
+      <canvas id="line" class="chart chart-line" chart-data="$ctrl.dailyBoe"
+        chart-series="$ctrl.seriesBOE" chart-options="$ctrl.options"
+        chart-colors="$ctrl.colors">
+      </canvas>
+      <div class="text-center">
+        <h3>Monthly {{$ctrl.type}} BO</h3>
+      </div>
+      <canvas id="line" class="chart chart-line" chart-data="$ctrl.monthlyBo"
+        chart-series="$ctrl.series" chart-options="$ctrl.options"
+        chart-colors="$ctrl.colors">
+      </canvas>
+      <div class="text-center">
+        <h3>Daily {{$ctrl.type}} BO</h3>
+      </div>
+      <canvas id="line" class="chart chart-line" chart-data="$ctrl.dailyBo"
+        chart-series="$ctrl.series" chart-options="$ctrl.options"
+        chart-colors="$ctrl.colors">
+      </canvas>
+    </div>
+  </section>
+  <div style="display: flex; flex-direction: column" style="margin-top: 2em;">
+    <div id="table" ng-if="!$ctrl.daily">
+      <div style="display: flex; justify-content: space-between">
+        <button class="btn btn-sm btn-success" ng-click="$ctrl.btnText = !$ctrl.btnText; $ctrl.daily = !$ctrl.daily">
+          {{$ctrl.btnText ? 'Daily' : 'Monthly'}}
+        </button>
+        <div class="text-center">
+          <h3>Monthly {{$ctrl.type}} Production</h3>
+        </div>
+        <div>
+        </div>
+      </div>
+      <table class="table table-responsive table-bordered table-striped" style="margin-left: 7em">
+        <thead class="table-info">
+          <tr>
+            <th ng-repeat="(key,value) in $ctrl.monthlyData[0]">{{key}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="month in $ctrl.monthlyData" >
+            <td ng-repeat="(key, value) in month">
+              {{value}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="table" ng-if="$ctrl.daily">
+      <div style="display: flex; justify-content: space-between">
+        <button class="btn btn-sm btn-success" ng-click="$ctrl.btnText = !$ctrl.btnText; $ctrl.daily = !$ctrl.daily">
+          {{$ctrl.btnText ? 'Daily' : 'Monthly'}}
+        </button>
+        <div class="text-center">
+          <h3>Daily {{$ctrl.type}} Production</h3>
+        </div>
+        <div>
+        </div>
+      </div>
+      <table class="table table-responsive table-bordered table-striped" style="margin-left: 7em">
+        <thead class="table-info">
+          <tr>
+            <th ng-repeat="(key,value) in $ctrl.dailyData[0]">{{key}}</th>
+          </tr>
+        </thead>
+        <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">
+          <tr ng-repeat="day in $ctrl.dailyData | limitTo:$ctrl.displayed" >
+            <td ng-repeat="(key, value) in day">
+              {{value}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

@@ -23,7 +23,7 @@
     </thead>
     <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">
       <tr ng-repeat="day in $ctrl.data | limitTo:$ctrl.displayed">
-        <td ng-repeat="(key, value) in day" ng-hide="key == '_id' || key == 'undefined' || key == 'TC'" ng-click="!$ctrl.btnText ? day.editing[key] = true : ''">
+        <td ng-repeat="(key, value) in day" ng-hide="key == '_id' || key == 'undefined' || key == 'TC' || key == 'editing'" ng-click="!$ctrl.btnText ? day.editing[key] = true : ''">
         <input ng-if="day.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(day, day[key], day.editing)" ng-model="day[key]">
         <p ng-if="!day.editing[key]">
           {{value}}

@@ -25,8 +25,18 @@
       vm.displayed = 50;
       waterService.getTc(tc)
         .then(response => {
-          vm.data = response[0].data;
+          // vm.data = response[0].data;
           vm.keys = Object.keys(response[0].data[0]);
+          vm.data = response[0].data.map(day => {
+            Object.keys(response[0].data[0]).forEach(key => {
+              if (typeof day[key] == 'number') {
+                day[key] = waterService.numberWithCommas(Math.round(day[key]));
+              } else {
+                day[key] = day[key];
+              }
+            });
+            return day;
+          });
           return vm.data;
         });
     };
@@ -42,10 +52,13 @@
     };
 
     function editing(well, value, column) {
-      console.log(well);
-      console.log(value);
-      console.log(column);
       delete well.editing;
+      // console.log(well);
+      // $http.patch(`http://localhost:3000/tc/${well.TC}`, well)
+      //   .then(result => {
+      //     console.log(result);
+      //   })
+      well.Total_Liq = waterService.numberWithCommas((Number(well.Oil.replace(',', '')) + Number(well.Water.replace(',',''))));
     }
 
     function loadTcs() {

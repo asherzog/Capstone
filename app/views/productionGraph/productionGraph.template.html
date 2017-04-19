@@ -1,0 +1,32 @@
+<section class="container" style="margin: 3em 0 5em 0">
+  <div class="graph">
+    <div class="text-center">
+      <h3>Monthly {{$ctrl.type}} BOE</h3>
+    </div>
+    <canvas id="line" class="chart chart-line" chart-data="$ctrl.monthlyBoe"
+      chart-series="$ctrl.seriesBOE" chart-options="$ctrl.options"
+      chart-colors="$ctrl.colors">
+    </canvas>
+    <div class="text-center">
+      <h3>Daily {{$ctrl.type}} BOE</h3>
+    </div>
+    <canvas id="line" class="chart chart-line" chart-data="$ctrl.dailyBoe"
+      chart-series="$ctrl.seriesBOE" chart-options="$ctrl.options"
+      chart-colors="$ctrl.colors">
+    </canvas>
+    <div class="text-center">
+      <h3>Monthly {{$ctrl.type}} BO</h3>
+    </div>
+    <canvas id="line" class="chart chart-line" chart-data="$ctrl.monthlyBo"
+      chart-series="$ctrl.series" chart-options="$ctrl.options"
+      chart-colors="$ctrl.colors">
+    </canvas>
+    <div class="text-center">
+      <h3>Daily {{$ctrl.type}} BO</h3>
+    </div>
+    <canvas id="line" class="chart chart-line" chart-data="$ctrl.dailyBo"
+      chart-series="$ctrl.series" chart-options="$ctrl.options"
+      chart-colors="$ctrl.colors">
+    </canvas>
+  </div>
+</section>

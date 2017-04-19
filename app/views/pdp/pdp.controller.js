@@ -21,8 +21,18 @@
     vm.selection = function(name) {
       waterService.getPdpByName(vm.pdp)
         .then(results => {
-          vm.data = results
+          // vm.data = results;
           vm.keys = Object.keys(results[0]);
+          vm.data = results.map(month => {
+            Object.keys(results[0]).forEach(key => {
+              if (typeof month[key] == 'number') {
+                month[key] = waterService.numberWithCommas(Math.round(month[key]));
+              } else {
+                month[key] = month[key];
+              }
+            });
+            return month;
+          });
         });
     };
 

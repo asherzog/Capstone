@@ -1,5 +1,5 @@
 <section class="home">
-  <div class="text-center">
+  <div class="text-center" ng-if="$ctrl.printing != 'printing'">
     <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
       Create
     </button>

@@ -4,7 +4,7 @@
 }
 nav {
   background: linear-gradient(#2174ad,#376379);
-  height: 8em;
+  height: 20%;
 }
 nav .container {
   display: flex;
@@ -14,6 +14,7 @@ nav .container {
   top: 50%;
   align-self: center;
 }
+
 #table {
   margin: 0 1em 0 1em;
 }
@@ -23,8 +24,8 @@ nav .container {
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 0.25em;
-  height: 7em;
-  width: 18em;
+  height: auto;
+  width: 25%;
 }
 .home {
   margin-top: 0.5em;
@@ -36,14 +37,17 @@ nav .container {
   background: #dae2ef;
 }
 .tables {
-  width: 90vw;
+  /*width: 90vw;*/
   /*justify-content: space-between;*/
   margin-top: 1.5em;
 }
 
-.daily {
-  height: 80vh;
-  overflow-y: scroll;
+.printing {
+  zoom: 25%;
+}
+
+.pMargins {
+  margin-left: 0;
 }
 
 .formWrapper {

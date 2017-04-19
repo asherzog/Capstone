@@ -7,6 +7,8 @@
 
   function service($http) {
 
+    this.printing = '';
+
     this.addNewWell = function(well) {
       return $http.post('http://localhost:3000/wells', well)
         .then((response) => {

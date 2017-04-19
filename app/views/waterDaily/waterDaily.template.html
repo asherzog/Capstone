@@ -1,4 +1,4 @@
-<div id="table" class="daily">
+<div id="table">
   <h3>Daily Water Forecast</h3>
   <table class="table table-responsive table-bordered table-striped table-scroll">
     <thead class="table-info">
@@ -6,8 +6,8 @@
         <th ng-repeat="(key,value) in $ctrl.same[0]">{{key}}</th>
       </tr>
     </thead>
-    <tbody>
-      <tr ng-repeat="month in $ctrl.same | orderBy: $ctrl.orderFunction" >
+    <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">
+      <tr ng-repeat="month in $ctrl.same | orderBy: $ctrl.orderFunction | limitTo:$ctrl.displayed" >
         <td ng-repeat="(key, value) in month">
           {{value}}
         </td>

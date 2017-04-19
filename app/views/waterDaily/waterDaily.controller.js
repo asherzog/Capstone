@@ -9,6 +9,11 @@
     const vm = this;
     let system = $state.params.water;
     vm.$onInit = loadData;
+    vm.displayed = 50;
+
+    vm.loadMore = function() {
+      vm.displayed += 20;
+    };
 
     vm.orderFunction = function(well) {
       return new Date(well.Day);

@@ -1,6 +1,6 @@
 <section class="container">
   <production-graph></production-graph>
-  
+
   <div style="display: flex; flex-direction: column" style="margin-top: 2em;">
     <div id="table" ng-if="!$ctrl.daily">
       <div style="display: flex; justify-content: space-between">
@@ -13,7 +13,7 @@
         <div>
         </div>
       </div>
-      <table class="table table-responsive table-bordered table-striped" style="margin-left: 7em">
+      <table class="table table-responsive table-bordered table-striped">
         <thead class="table-info">
           <tr>
             <th ng-repeat="(key,value) in $ctrl.monthlyData[0]">{{key}}</th>
@@ -39,7 +39,7 @@
         <div>
         </div>
       </div>
-      <table class="table table-responsive table-bordered table-striped" style="margin-left: 7em">
+      <table class="table table-responsive table-bordered table-striped">
         <thead class="table-info">
           <tr>
             <th ng-repeat="(key,value) in $ctrl.dailyData[0]">{{key}}</th>

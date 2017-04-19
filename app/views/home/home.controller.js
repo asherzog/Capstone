@@ -24,10 +24,12 @@
     };
 
     vm.printer = function() {
-      vm.printing = '';
+      vm.printing = 'printing';
+      HomeService.printing = 'printing';
       ipcRenderer.send('printingHome', 'ping')
       ipcRenderer.on('wrote-pdf', function (event, path) {
         vm.printing = 'table-responsive';
+        HomeService.printing = '';
         $scope.$apply();
         // document.getElementById('pdf-path').innerHTML = message
       });

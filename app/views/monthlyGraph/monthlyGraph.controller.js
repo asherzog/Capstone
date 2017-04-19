@@ -5,20 +5,24 @@
     .module('app')
     .controller('monthlyGraphController', monthlyGraphController);
 
-  function monthlyGraphController($http, $state, waterService) {
+  function monthlyGraphController($http, $state, waterService, HomeService, $scope) {
     const vm = this;
     let system = $state.params.water;
     vm.system = system;
     vm.$onInit = loadData;
     vm.monthly;
+    vm.printing = false;
     const {ipcRenderer} = require('electron');
 
 
     vm.printer = function() {
-      console.log('clicked');
+      vm.printing = true;
+      HomeService.printing = 'printing';
       ipcRenderer.send('printingHome', 'ping')
       ipcRenderer.on('wrote-pdf', function (event, path) {
-        console.log(path);
+        vm.printing = false;
+        HomeService.printing = '';
+        $scope.$apply();
         // document.getElementById('pdf-path').innerHTML = message
       });
     };

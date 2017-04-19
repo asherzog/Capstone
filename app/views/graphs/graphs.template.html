@@ -1,9 +1,9 @@
-<div class="text-center">
+<div class="text-center" ng-if="!$ctrl.printing">
   <button class="btn btn-primary" ng-click="$ctrl.printer()">
     Print
   </button>
 </div>
-<section class="container" style="margin-left: 0;">
+<section class="container" ng-class="$ctrl.printingMargins">
   <div class="graph">
     <canvas id="line" class="chart chart-line" chart-data="$ctrl.data"
       chart-series="$ctrl.series" chart-options="$ctrl.optionsLine"

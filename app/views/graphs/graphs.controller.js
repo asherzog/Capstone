@@ -5,21 +5,27 @@
     .module('app')
     .controller('graphsController', graphsController);
 
-  function graphsController($http, $state, waterService, HomeService) {
+  function graphsController($http, $state, waterService, HomeService, $scope) {
     const vm = this;
     vm.$onInit = loadData;
     vm.data = [];
     vm.dailyData = [];
     vm.series = [];
+    vm.printing = false;
+    vm.printingMargins = '';
     const {ipcRenderer} = require('electron');
 
 
     vm.printer = function() {
-      console.log('clicked');
-      ipcRenderer.send('printingGraphs', 'ping')
+      vm.printing = true;
+      vm.printingMargins = 'pMargins'
+      HomeService.printing = 'printing';
+      ipcRenderer.send('printingGraphs', 'ping');
       ipcRenderer.on('wrote-pdf', function (event, path) {
-        console.log(path);
-        // document.getElementById('pdf-path').innerHTML = message
+        vm.printing = false;
+        vm.printingMargins = '';
+        HomeService.printing = '';
+        $scope.$apply();
       });
     };
 

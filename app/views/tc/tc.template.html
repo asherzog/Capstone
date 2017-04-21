@@ -18,7 +18,7 @@
   <table class="table table-bordered" ng-class="$ctrl.printing">
     <thead class="table-info">
       <tr>
-        <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id' || key == 'undefined' || key == 'TC'">{{key}}</th>
+        <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id' || key == 'undefined' || key == 'TC'" id="#tKeys">{{key}}</th>
       </tr>
     </thead>
     <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">

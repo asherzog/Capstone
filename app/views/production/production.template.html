@@ -16,7 +16,7 @@
       <table class="table table-responsive table-bordered table-striped">
         <thead class="table-info">
           <tr>
-            <th ng-repeat="(key,value) in $ctrl.monthlyData[0]">{{key}}</th>
+            <th ng-repeat="(key,value) in $ctrl.monthlyData[0]" id="#tKeys">{{key}}</th>
           </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
       <table class="table table-responsive table-bordered table-striped">
         <thead class="table-info">
           <tr>
-            <th ng-repeat="(key,value) in $ctrl.dailyData[0]">{{key}}</th>
+            <th ng-repeat="(key,value) in $ctrl.dailyData[0]" id="#tKeys">{{key}}</th>
           </tr>
         </thead>
         <tbody infinite-scroll="$ctrl.loadMore()" infinite-scroll-distance="3">

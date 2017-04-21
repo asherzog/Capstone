@@ -1,3 +1,7 @@
+body {
+  -webkit-print-color-adjust: exact;
+}
+
 .btn {
   margin: 0.25em;
   height: 3em;
@@ -16,23 +20,33 @@ nav .container {
 }
 
 .orange {
-  background-color: #ffcc80;
+  background-color: #ffcc80 !important;
+  -webkit-print-color-adjust: exact !important;
 }
 
 .purple {
-  background-color: #bf80ff;
+  background-color: #bf80ff !important;
+  -webkit-print-color-adjust: exact !important;
 }
 
 .blue {
-  background-color: #33adff;
+  background-color: #33adff !important;
+  -webkit-print-color-adjust: exact !important;
 }
 
 .green {
-  background-color: #59b300;
+  background-color: #59b300 !important;
+  -webkit-print-color-adjust: exact !important;
 }
 
 .lightGreen {
-  background-color: #b3ff66;
+  background-color: #b3ff66 !important;
+  -webkit-print-color-adjust: exact !important;
+}
+
+.table-info, .table-info>td, .table-info>th {
+  background-color: #d9edf7 !important;
+  -webkit-print-color-adjust: exact;
 }
 
 #table {
@@ -64,6 +78,7 @@ nav .container {
 
 .printing {
   zoom: 25%;
+  -webkit-print-color-adjust: exact !important;
 }
 
 .pMargins {
@@ -97,4 +112,40 @@ nav .container {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+
+  }
+  .ng-scope .orange {
+    background-color: #ffcc80 !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ng-scope .purple {
+    background-color: #bf80ff !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ng-scope .blue {
+    background-color: #33adff !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ng-scope .green {
+    background-color: #59b300 !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .ng-scope .lightGreen {
+    background-color: #b3ff66 !important;
+    -webkit-print-color-adjust: exact;
+  }
+
+  #tKeys {
+    background-color: #d9edf7 !important;
+    -webkit-print-color-adjust: exact;
+}
 }

@@ -15,7 +15,7 @@
       <thead class="table-info">
         <tr>
           <th ng-hide="!$ctrl.options.disabled">Delete</th>
-          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'">{{key}}</th>
+          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys">{{key}}</th>
         </tr>
       </thead>
       <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">

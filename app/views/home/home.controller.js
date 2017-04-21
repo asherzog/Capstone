@@ -26,7 +26,7 @@
     vm.printer = function() {
       vm.printing = 'printing';
       HomeService.printing = 'printing';
-      ipcRenderer.send('printingHome', 'ping')
+      ipcRenderer.send('printingHome', 'please print')
       ipcRenderer.on('wrote-pdf', function (event, path) {
         vm.printing = 'table-responsive';
         HomeService.printing = '';

@@ -53,14 +53,14 @@
           rig.Wells = alasql('SELECT * FROM ? ORDER BY new Date(SPUD)',[rig.Wells]);
         });
         rigs = rigs.sort((a,b) => {
-          if (b.RIG == 'Completion' || b.RIG == 'Bullpen') {
+          if (b.RIG == 'Completed' || b.RIG == 'Bullpen') {
             return -1;
           }
           else {
             return 1;
           };
         });
-        if (rigs[rigs.length - 2].RIG == 'Completion') {
+        if (rigs[rigs.length - 2].RIG == 'Completed') {
           let temp = rigs[rigs.length - 2];
           rigs[rigs.length - 2] = rigs[rigs.length - 1];
           rigs[rigs.length - 1] = temp;
@@ -131,6 +131,7 @@
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
+          loadData();
         }
         vm.newRigs[0].Wells = rigArr;
       } else {
@@ -140,6 +141,7 @@
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
+          loadData();
         }
       }
     };

@@ -19,8 +19,22 @@ nav .container {
   align-self: center;
 }
 
+.table-responsive.table-bordered {
+  border: 1px solid #d9d9d9;
+}
+
 .orange {
   background-color: #ffcc80 !important;
+  -webkit-print-color-adjust: exact !important;
+}
+
+.lightOrange {
+  background-color: #fff5e6 !important;
+  -webkit-print-color-adjust: exact !important;
+}
+
+.completedColor {
+  background-color: #d9f2e6 !important;
   -webkit-print-color-adjust: exact !important;
 }
 
@@ -117,11 +131,24 @@ nav .container {
 @media print {
   body {
     -webkit-print-color-adjust: exact !important;
+  }
 
+  .table-responsive.table-bordered {
+    border: 1px solid #363030 !important;
   }
   .ng-scope .orange {
     background-color: #ffcc80 !important;
     -webkit-print-color-adjust: exact;
+  }
+
+  .ng-scope .lightOrange {
+    background-color: #fff5e6 !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  .ng-scope .completedColor {
+    background-color: #d9f2e6 !important;
+    -webkit-print-color-adjust: exact !important;
   }
 
   .ng-scope .purple {
@@ -147,5 +174,5 @@ nav .container {
   #tKeys {
     background-color: #d9edf7 !important;
     -webkit-print-color-adjust: exact;
-}
+  }
 }

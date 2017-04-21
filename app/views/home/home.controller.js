@@ -52,6 +52,19 @@
           });
           rig.Wells = alasql('SELECT * FROM ? ORDER BY new Date(SPUD)',[rig.Wells]);
         });
+        rigs = rigs.sort((a,b) => {
+          if (b.RIG == 'Completion' || b.RIG == 'Bullpen') {
+            return -1;
+          }
+          else {
+            return 1;
+          };
+        });
+        if (rigs[rigs.length - 2].RIG == 'Completion') {
+          let temp = rigs[rigs.length - 2];
+          rigs[rigs.length - 2] = rigs[rigs.length - 1];
+          rigs[rigs.length - 1] = temp;
+        }
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
         waterService.getAllSystems()

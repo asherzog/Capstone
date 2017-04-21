@@ -21,15 +21,17 @@
     waterService.getWaterSystem(system)
       .then(response => {
         vm.newWells = response.map(well => {
-          if (!well.First_Production) {
-            well.First_Production = HomeService.convertDate(well.SPUD, 67);
-          }
-          vm.wells.push({
-            Well: well.WELL,
-            Type: well.TYPE_CURVE,
-            First_Production: well.First_Production
-          });
-          return well.WELL;
+          if (well.RIG != 'Bullpen') {
+            if (!well.First_Production) {
+              well.First_Production = HomeService.convertDate(well.SPUD, 67);
+            }
+            vm.wells.push({
+              Well: well.WELL,
+              Type: well.TYPE_CURVE,
+              First_Production: well.First_Production
+            });
+            return well.WELL;
+          }  
         });
         return vm.newWells;
       })

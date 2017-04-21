@@ -25,7 +25,8 @@
               x
             </button>
           </td>
-          <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''">
+          <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''"
+              ng-class="{orange: value == '7500', purple: value == '5000', blue: value == '10000', green: key == 'FULL_RTD', lightGreen: key == 'MINERAL_RTD'}">
           <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
           <p ng-if="!well.editing[key]">
             {{value}}

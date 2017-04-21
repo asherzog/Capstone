@@ -15,6 +15,26 @@ nav .container {
   align-self: center;
 }
 
+.orange {
+  background-color: #ffcc80;
+}
+
+.purple {
+  background-color: #bf80ff;
+}
+
+.blue {
+  background-color: #33adff;
+}
+
+.green {
+  background-color: #59b300;
+}
+
+.lightGreen {
+  background-color: #b3ff66;
+}
+
 #table {
   margin: 0 1em 0 1em;
 }

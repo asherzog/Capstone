@@ -150,7 +150,13 @@
 
       waterService.getAllRigs()
         .then(response => {
-          vm.rigs = response;
+          let rigs = [];
+          response.forEach(rig => {
+            if (rig != 'Bullpen' && rig != 'Completion') {
+              rigs.push(rig);
+            }
+          });
+          vm.rigs = rigs;
           vm.rigs.push("CREATE NEW");
         });
 

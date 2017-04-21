@@ -142,6 +142,7 @@
             vm.dailyBoe.push(pdpBoe);
             vm.dailyBoe.push(newBoe);
             vm.dailyBoe.push(totalBoe);
+            document.getElementById('loading').remove("loader");
           });
         });
 

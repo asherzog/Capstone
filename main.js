@@ -252,25 +252,24 @@ ipcMain.on('printingHome', (event, arg) => {
 });
 
 ipcMain.on('printingGraphs', (event, arg) => {
-  window.print();
-  // console.log(arg);
-  // const pdfPath = path.join(os.tmpdir(), 'print.pdf')
-  // const win = BrowserWindow.fromWebContents(event.sender)
-  // // Use default printing options
-  // win.webContents.printToPDF({
-  //   marginsType: 0,
-  //   pageSize: 'Letter',
-  //   printBackground: true,
-  //   printSelectionOnly: false,
-  //   landscape: true
-  // }, function (error, data) {
-  //   if (error) throw error
-  //   fs.writeFile(pdfPath, data, function (error) {
-  //     if (error) {
-  //       throw error
-  //     }
-  //     shell.openExternal('file://' + pdfPath)
-  //     event.sender.send('wrote-pdf', pdfPath)
-  //   });
-  // });
+  console.log(arg);
+  const pdfPath = path.join(os.tmpdir(), 'print.pdf')
+  const win = BrowserWindow.fromWebContents(event.sender)
+  // Use default printing options
+  win.webContents.printToPDF({
+    marginsType: 0,
+    pageSize: 'Letter',
+    printBackground: true,
+    printSelectionOnly: false,
+    landscape: true
+  }, function (error, data) {
+    if (error) throw error
+    fs.writeFile(pdfPath, data, function (error) {
+      if (error) {
+        throw error
+      }
+      shell.openExternal('file://' + pdfPath)
+      event.sender.send('wrote-pdf', pdfPath)
+    });
+  });
 });

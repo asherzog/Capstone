@@ -29,12 +29,12 @@ nav .container {
 }
 
 .lightOrange {
-  background-color: #fff5e6 !important;
+  background: #fff5e6 !important;
   -webkit-print-color-adjust: exact !important;
 }
 
 .completedColor {
-  background-color: #d9f2e6 !important;
+  background: #d9f2e6 !important;
   -webkit-print-color-adjust: exact !important;
 }
 
@@ -85,8 +85,6 @@ nav .container {
   background: #dae2ef;
 }
 .tables {
-  /*width: 90vw;*/
-  /*justify-content: space-between;*/
   margin-top: 1.5em;
 }
 
@@ -175,4 +173,14 @@ nav .container {
     background-color: #d9edf7 !important;
     -webkit-print-color-adjust: exact;
   }
+
+  .table td,
+  .table th {
+    background-color: inherit !important;
+  }
+
+  canvas {
+    page-break-after: always;
+  }
+
 }

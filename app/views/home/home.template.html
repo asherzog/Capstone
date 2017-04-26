@@ -18,8 +18,8 @@
           <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys">{{key}}</th>
         </tr>
       </thead>
-      <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig" ng-class="{lightOrange: rig.RIG == 'Bullpen', completedColor: rig.RIG == 'Completed'}">
-        <tr ng-repeat="well in rig.Wells">
+      <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
+        <tr ng-repeat="well in rig.Wells" ng-class="{lightOrange: rig.RIG == 'Bullpen', completedColor: rig.RIG == 'Completed'}">
           <td ng-hide="!$ctrl.options.disabled">
             <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
               x

@@ -95,12 +95,205 @@
         },
         "series":[]
       };
+      var myConfigDaily = {
+        "background-color":"white",
+        "type":"line",
+        "title":{
+          "text":"Daily Water Forecast",
+          "color":"#333",
+          "background-color":"white",
+          "width":"100%",
+          "text-align":"center",
+        },
+        "legend":{
+          "layout":"x1",
+          "margin-top":"5%",
+          "border-width":"0",
+          "shadow":false,
+          "marker":{
+            "cursor":"hand",
+            "border-width":"0"
+          },
+          "background-color": "white",
+          "item":{
+            "cursor":"hand"
+          },
+          "toggle-action":"remove"
+        },
+        "scale-x":{
+          "labels": [],
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "scale-y":{
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "crosshair-x":{
+          "plot-label":{
+            "multiple":true
+          }
+        },
+        "plot":{
+          "line-width": 2,
+          "marker":{
+            "size":2
+          },
+          "selection-mode":"multiple",
+          "background-mode":"graph",
+          "selected-state":{
+            "line-width":4
+          },
+          "background-state":{
+            "line-color":"#eee",
+            "marker":{
+              "background-color":"none"
+            }
+          }
+        },
+        "series":[]
+      };
+      var myConfigStacked = {
+        "background-color":"white",
+        "type":"line",
+        "title":{
+          "text":"Monthly Stacked Water Forecast",
+          "color":"#333",
+          "background-color":"white",
+          "width":"100%",
+          "text-align":"center",
+        },
+        "legend":{
+          "layout":"x1",
+          "margin-top":"5%",
+          "border-width":"0",
+          "shadow":false,
+          "marker":{
+            "cursor":"hand",
+            "border-width":"0"
+          },
+          "background-color": "white",
+          "item":{
+            "cursor":"hand"
+          },
+          "toggle-action":"remove"
+        },
+        "scale-x":{
+          "labels": [],
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "scale-y":{
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "crosshair-x":{
+          "plot-label":{
+            "multiple":true
+          }
+        },
+        "plot":{
+          "line-width": 2,
+          "marker":{
+            "size":2
+          },
+          "selection-mode":"multiple",
+          "background-mode":"graph",
+          "selected-state":{
+            "line-width":4
+          },
+          "background-state":{
+            "line-color":"#eee",
+            "marker":{
+              "background-color":"none"
+            }
+          }
+        },
+        "series":[]
+      };
+      var myConfigDailyStacked = {
+        "background-color":"white",
+        "type":"line",
+        "title":{
+          "text":"Daily Stacked Water Forecast",
+          "color":"#333",
+          "background-color":"white",
+          "width":"100%",
+          "text-align":"center",
+        },
+        "legend":{
+          "layout":"x1",
+          "margin-top":"5%",
+          "border-width":"0",
+          "shadow":false,
+          "marker":{
+            "cursor":"hand",
+            "border-width":"0"
+          },
+          "background-color": "white",
+          "item":{
+            "cursor":"hand"
+          },
+          "toggle-action":"remove"
+        },
+        "scale-x":{
+          "labels": [],
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "scale-y":{
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
+        },
+        "crosshair-x":{
+          "plot-label":{
+            "multiple":true
+          }
+        },
+        "plot":{
+          "line-width": 2,
+          "marker":{
+            "size":2
+          },
+          "selection-mode":"multiple",
+          "background-mode":"graph",
+          "selected-state":{
+            "line-width":4
+          },
+          "background-state":{
+            "line-color":"#eee",
+            "marker":{
+              "background-color":"none"
+            }
+          }
+        },
+        "series":[]
+      };
       waterService.getAllSystems()
         .then(response => {
           return response;
         })
         .then(systems => {
           var i = 0;
+          var i2 = 0;
           systems.forEach(system => {
             waterService.getWaterMonthly(system)
               .then(response => {
@@ -128,15 +321,33 @@
                     "border-color":colors[i]
                   }
                 });
+                myConfigStacked["series"].push({
+                  "aspect": "spline",
+                  "stacked": true,
+                  "values": total,
+                  "text": system,
+                  "line-color":colors[i],
+                  "marker":{
+                    "background-color":colors[i],
+                    "border-color":colors[i]
+                  }
+                });
                 zingchart.render({
                   id : 'myChart',
                   data : myConfig,
                   height: "100%",
                   width: "100%"
                 });
+                zingchart.render({
+                  id : 'myChart3',
+                  data : myConfigStacked,
+                  height: "100%",
+                  width: "100%"
+                });
                 vm.data.push(total);
                 vm.series.push(system);
                 i++;
+                return system;
               })
               .then(() => {
                 return waterService.getWaterDaily(system)
@@ -146,16 +357,50 @@
                       b = new Date(b.Day);
                       return a<b ? -1 : a>b ? 1 : 0;
                     });
-                    let total = response.map(month => {
+                    let totalDaily = response.map(month => {
                       if (typeof month.Total != 'number') {
                         month.Total = Number(month.Total.replace(',',''));
                       }
-                      return {
-                        x: month.Day,
-                        y: month.Total
-                      };
+                      return [month.Day, month.Total];
                     });
-                    vm.dailyData.push(total);
+                    let colors = ["#ff6666","#00abb0","#28ffef","#f2b012","#811eae","#6e9cdb"];
+                    myConfigDaily["series"].push({
+                      "aspect": "spline",
+                      "values": totalDaily,
+                      "text": system,
+                      "line-color":colors[i2],
+                      "marker":{
+                        "background-color":colors[i2],
+                        "border-color":colors[i2]
+                      }
+                    });
+                    myConfigDailyStacked["series"].push({
+                      "aspect": "spline",
+                      "stacked": true,
+                      "values": totalDaily,
+                      "text": system,
+                      "line-color":colors[i2],
+                      "marker":{
+                        "background-color":colors[i2],
+                        "border-color":colors[i2]
+                      }
+                    });
+                    zingchart.render({
+                      id : 'myChart2',
+                      data : myConfigDaily,
+                      height: "100%",
+                      width: "100%"
+                    });
+                    zingchart.render({
+                      id : 'myChart4',
+                      data : myConfigDailyStacked,
+                      height: "100%",
+                      width: "100%"
+                    });
+                    vm.dailyData.push(totalDaily);
+                    i2++;
+                    console.log(i2);
+                    return totalDaily;
                   });
               });
           });

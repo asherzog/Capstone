@@ -62,34 +62,34 @@
             "background-color":"white",
             "type":"line",
             "title":{
-                "text":"Monthly Water Forecast",
-                "color":"#333",
-                "background-color":"white",
-                "width":"100%",
-                "text-align":"center",
+              "text":"Monthly Water Forecast",
+              "color":"#333",
+              "background-color":"white",
+              "width":"100%",
+              "text-align":"center",
             },
-        	"legend":{
-                "layout":"x1",
-                "margin-top":"5%",
-                "border-width":"0",
-                "shadow":false,
-                "marker":{
-                    "cursor":"hand",
-                    "border-width":"0"
-                },
-                "background-color": "white",
-                "item":{
-                    "cursor":"hand"
-                },
-                "toggle-action":"remove"
-            },
+        	"legend": {
+          "layout":"x1",
+          "margin-top":"5%",
+          "border-width":"0",
+          "shadow":false,
+          "marker":{
+            "cursor":"hand",
+            "border-width":"0"
+          },
+          "background-color": "white",
+          "item":{
+            "cursor":"hand"
+          },
+          "toggle-action":"remove"
+        },
         	"scale-x":{
-            "labels":vm.labels,
-            "guide":{
-              "line-color":"black",
-              "line-width":1,
-              "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-            }
+          "labels":vm.labels,
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          }
         	},
         	"scale-y":{
           "guide":{
@@ -99,63 +99,61 @@
           },
           "thousands-separator": ","
         	},
-          "crosshair-x":{
-            "plot-label":{
-              "multiple":true,
-              "thousands-separator": ","
-            }
-          },
-        	"plot":{
-            "tooltip": {
-              "visible": false
+            "crosshair-x":{
+              "plot-label":{
+                "multiple":true,
+                "thousands-separator": ","
+              }
             },
-                "line-width": 2,
-                "marker":{
-                    "size":2
-                },
-                "selection-mode":"multiple",
-                "background-mode":"graph",
-                "selected-state":{
-                    "line-width":4
-                },
-                "background-state":{
-                    "line-color":"#eee",
-                    "marker":{
-                        "background-color":"none"
-                    }
-                }
+        	"plot":{
+          "tooltip": {
+            "visible": false
+          },
+          "line-width": 2,
+          "marker":{
+            "size":2
+          },
+          "selection-mode":"multiple",
+          "background-mode":"graph",
+          "selected-state":{
+            "line-width":4
+          },
+          "background-state":{
+            "line-color":"#eee",
+            "marker":{
+              "background-color":"none"
+            }
+          }
         	},
         	"series":[
-                {
-                    "values":vm.data[0],
-                    "text":"PDP",
-                    "line-color":"#a6cee3",
-                    "marker":{
-                        "background-color":"#a6cee3",
-                        "border-color":"#a6cee3"
-                    }
-                },
-                {
-                    "values":vm.data[1],
-                    "text":"New Wells",
-                    "line-color":"#1f78b4",
-                    "marker":{
-                        "background-color":"#1f78b4",
-                        "border-color":"#1f78b4"
-                    }
-                },
-                {
-                    "values":vm.data[2],
-                    "text":"Total",
-                    "line-color":"#b2df8a",
-                    "marker":{
-                        "background-color":"#b2df8a",
-                        "border-color":"#b2df8a"
-                    }
-                }
-        	]
-        };
-
+          {
+            "values":vm.data[0],
+            "text":"PDP",
+            "line-color":"#ff6666",
+            "marker":{
+              "background-color":"#ff6666",
+              "border-color":"#ff6666"
+            }
+          },
+          {
+            "values":vm.data[1],
+            "text":"New Wells",
+            "line-color":"#00abb0",
+            "marker":{
+              "background-color":"#00abb0",
+              "border-color":"#00abb0"
+            }
+          },
+          {
+            "values":vm.data[2],
+            "text":"Total",
+            "line-color":"#6e9cdb",
+            "marker":{
+              "background-color":"#6e9cdb",
+              "border-color":"#6e9cdb"
+            }
+          }]
+          };
         zingchart.render({
         	id : 'myChart',
         	data : myConfig,
@@ -165,72 +163,6 @@
 
           return vm.data;
         })
-        // .then(() => {
-        //   vm.series = ['PDP', 'New Wells', 'Total'];
-        //   vm.colors = [{
-        //     backgroundColor : '#0062ff',
-        //     pointBackgroundColor: '#0062ff',
-        //     pointHoverBackgroundColor: '#0062ff',
-        //     borderColor: '#0062ff',
-        //     pointBorderColor: '#0062ff',
-        //     pointHoverBorderColor: '#0062ff',
-        //     fill: false
-        //   },{
-        //     backgroundColor:'#009900',
-        //     pointBackgroundColor: '#009900',
-        //     pointBorderColor: '#009900',
-        //     pointHoverBackgroundColor: '#009900',
-        //     borderColor: '#009900',
-        //     pointBorderColor: '#009900',
-        //     pointHoverBorderColor: '#009900',
-        //     fill: false
-        //   }, {
-        //     backgroundColor:'#670422',
-        //     pointBackgroundColor: '#670422',
-        //     pointBorderColor: '#670422',
-        //     pointHoverBackgroundColor: '#670422',
-        //     borderColor: '#670422',
-        //     pointBorderColor: '#670422',
-        //     pointHoverBorderColor: '#670422',
-        //     fill: false
-        //   }];
-        //   vm.options = {
-        //     scales: {
-        //       yAxes: [
-        //         {
-        //           id: 'y-axis-1',
-        //           type: 'linear',
-        //           display: true,
-        //           position: 'left',
-        //           ticks : {
-        //             callback: function(value) {
-        //               return waterService.numberWithCommas(value);
-        //             }
-        //           }
-        //         }
-        //       ]
-        //     },
-        //     title: {
-        //       display: true,
-        //       text: "Monthly Water Forecast",
-        //       fontSize: 30
-        //     },
-        //     legend: {
-        //       display: true,
-        //       cursor: "pointer",
-        //       labels: {
-        //         fontSize: 20
-        //       }
-        //     },
-        //     tooltips: {
-        //       callbacks: {
-        //         label: function (tooltipItems, data) {
-        //           return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
-        //         }
-        //       }
-        //     }
-        //   };
-        // })
         .then(() => {
           waterService.getWaterDaily(system)
             .then(response => {
@@ -331,28 +263,28 @@
               {
                 "values":vm.dataDaily[0],
                 "text":"PDP",
-                "line-color":"#a6cee3",
+                "line-color":"#ff6666",
                 "marker":{
-                  "background-color":"#a6cee3",
-                  "border-color":"#a6cee3"
+                  "background-color":"#ff6666",
+                  "border-color":"#ff6666"
                 }
               },
               {
                 "values":vm.dataDaily[1],
                 "text":"New Wells",
-                "line-color":"#1f78b4",
+                "line-color":"#00abb0",
                 "marker":{
-                  "background-color":"#1f78b4",
-                  "border-color":"#1f78b4"
+                  "background-color":"#00abb0",
+                  "border-color":"#00abb0"
                 }
               },
               {
                 "values":vm.dataDaily[2],
                 "text":"Total",
-                "line-color":"#b2df8a",
+                "line-color":"#6e9cdb",
                 "marker":{
-                  "background-color":"#b2df8a",
-                  "border-color":"#b2df8a"
+                  "background-color":"#6e9cdb",
+                  "border-color":"#6e9cdb"
                 }
               }]
               };
@@ -367,42 +299,6 @@
 
               return vm.dataDaily;
             });
-          vm.optionsDaily = {
-            scales: {
-              yAxes: [
-                {
-                  id: 'y-axis-1',
-                  type: 'linear',
-                  display: true,
-                  position: 'left',
-                  ticks : {
-                    callback: function(value) {
-                      return waterService.numberWithCommas(value);
-                    }
-                  }
-                }
-              ]
-            },
-            title: {
-              display: true,
-              text: "Daily Water Forecast",
-              fontSize: 30
-            },
-            legend: {
-              display: true,
-              cursor: "pointer",
-              labels: {
-                fontSize: 20
-              }
-            },
-            tooltips: {
-              callbacks: {
-                label: function (tooltipItems, data) {
-                  return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.yLabel.toLocaleString();
-                }
-              }
-            }
-          };
         });
     }
   }

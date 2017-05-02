@@ -19,10 +19,6 @@ nav .container {
   align-self: center;
 }
 
-.table-responsive.table-bordered {
-  border: 1px solid #d9d9d9;
-}
-
 .orange {
   background-color: #ffcc80 !important;
   -webkit-print-color-adjust: exact !important;
@@ -63,8 +59,9 @@ nav .container {
   -webkit-print-color-adjust: exact;
 }
 
-#table {
-  margin: 0 1em 0 1em;
+#table2 {
+  margin: auto;
+  text-align: center;
 }
 
 .logo {
@@ -77,6 +74,7 @@ nav .container {
 }
 .home {
   margin-top: 0.5em;
+  margin-left: 0.75em;
 }
 .table {
   font-size: 0.75em;
@@ -115,9 +113,10 @@ nav .container {
   border: 16px solid #f3f3f3;
   border-top: 16px solid #3498db;
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin-left: 40vw;
+  width: 10em;
+  height: 10em;
+  text-align: center;
+  margin: auto;
   animation: spin 2s linear infinite;
 }
 

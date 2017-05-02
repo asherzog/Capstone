@@ -41,19 +41,19 @@
           });
           let wells = response.map(month => {
             if (month.New_Wells != 0) {
-              month.New_Wells = Number(month.New_Wells.replace(',',''));
+              month.New_Wells = Number(month.New_Wells);
             }
             return month.New_Wells;
           });
           let pdp = response.map(month => {
             if (month.PDP != 0) {
-              month.PDP = Number(month.PDP.replace(',',''));
+              month.PDP = Number(month.PDP);
             }
             return month.PDP;
           });
           let total = response.map(month => {
             if (typeof month.Total != 'number') {
-              month.Total = Number(month.Total.replace(',',''));
+              month.Total = Number(month.Total);
             }
             return month.Total;
           });
@@ -92,18 +92,23 @@
             }
         	},
         	"scale-y":{
-            "guide":{
-              "line-color":"black",
-              "line-width":1,
-              "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-            }
+          "guide":{
+            "line-color":"black",
+            "line-width":1,
+            "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+          },
+          "thousands-separator": ","
         	},
           "crosshair-x":{
             "plot-label":{
-              "multiple":true
+              "multiple":true,
+              "thousands-separator": ","
             }
           },
         	"plot":{
+            "tooltip": {
+              "visible": false
+            },
                 "line-width": 2,
                 "marker":{
                     "size":2
@@ -239,19 +244,19 @@
               });
               let wells = response.map(month => {
                 if (month.New_Wells != 0) {
-                  month.New_Wells = Number(month.New_Wells.replace(',',''));
+                  month.New_Wells = Number(month.New_Wells);
                 }
                 return month.New_Wells;
               });
               let pdp = response.map(month => {
                 if (month.PDP != 0) {
-                  month.PDP = Number(month.PDP.replace(',',''));
+                  month.PDP = Number(month.PDP);
                 }
                 return month.PDP;
               });
               let total = response.map(month => {
                 if (typeof month.Total != 'number') {
-                  month.Total = Number(month.Total.replace(',',''));
+                  month.Total = Number(month.Total);
                 }
                 return month.Total;
               });
@@ -262,95 +267,95 @@
                 "background-color":"white",
                 "type":"line",
                 "title":{
-                    "text":"Daily Water Forecast",
-                    "color":"#333",
-                    "background-color":"white",
-                    "width":"100%",
-                    "text-align":"center",
+                  "text":"Daily Water Forecast",
+                  "color":"#333",
+                  "background-color":"white",
+                  "width":"100%",
+                  "text-align":"center",
                 },
             	"legend":{
-                    "layout":"x1",
-                    "margin-top":"5%",
-                    "border-width":"0",
-                    "shadow":false,
-                    "marker":{
-                        "cursor":"hand",
-                        "border-width":"0"
-                    },
-                    "background-color": "white",
-                    "item":{
-                        "cursor":"hand"
-                    },
-                    "toggle-action":"remove"
-                },
+              "layout":"x1",
+              "margin-top":"5%",
+              "border-width":"0",
+              "shadow":false,
+              "marker":{
+                "cursor":"hand",
+                "border-width":"0"
+              },
+              "background-color": "white",
+              "item":{
+                "cursor":"hand"
+              },
+              "toggle-action":"remove"
+            },
             	"scale-x":{
-                "labels":vm.labelsDaily,
-                "guide":{
-                  "line-color":"black",
-                  "line-width":1,
-                  "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-                }
+              "labels":vm.labelsDaily,
+              "guide":{
+                "line-color":"black",
+                "line-width":1,
+                "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
+              }
             	},
             	"scale-y":{
-                "guide":{
-                  "line-color":"black",
-                  "line-width":1,
-                  "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-                }
-            	},
-              "crosshair-x":{
-                "plot-label":{
-                  "multiple":true
-                }
+              "guide":{
+                "line-color":"black",
+                "line-width":1,
+                "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
               },
+              "thousands-separator": ","
+            	},
+                "crosshair-x":{
+                  "plot-label":{
+                    "multiple":true,
+                    "thousands-separator": ","
+                  }
+                },
             	"plot":{
-                    "line-width": 2,
-                    "marker":{
-                        "size":2
-                    },
-                    "selection-mode":"multiple",
-                    "background-mode":"graph",
-                    "selected-state":{
-                        "line-width":4
-                    },
-                    "background-state":{
-                        "line-color":"#eee",
-                        "marker":{
-                            "background-color":"none"
-                        }
-                    }
+              "line-width": 2,
+              "marker":{
+                "size":2
+              },
+              "selection-mode":"multiple",
+              "background-mode":"graph",
+              "selected-state":{
+                "line-width":4
+              },
+              "background-state":{
+                "line-color":"#eee",
+                "marker":{
+                  "background-color":"none"
+                }
+              }
             	},
             	"series":[
-                    {
-                        "values":vm.dataDaily[0],
-                        "text":"PDP",
-                        "line-color":"#a6cee3",
-                        "marker":{
-                            "background-color":"#a6cee3",
-                            "border-color":"#a6cee3"
-                        }
-                    },
-                    {
-                        "values":vm.dataDaily[1],
-                        "text":"New Wells",
-                        "line-color":"#1f78b4",
-                        "marker":{
-                            "background-color":"#1f78b4",
-                            "border-color":"#1f78b4"
-                        }
-                    },
-                    {
-                        "values":vm.dataDaily[2],
-                        "text":"Total",
-                        "line-color":"#b2df8a",
-                        "marker":{
-                            "background-color":"#b2df8a",
-                            "border-color":"#b2df8a"
-                        }
-                    }
-            	]
-            };
-
+              {
+                "values":vm.dataDaily[0],
+                "text":"PDP",
+                "line-color":"#a6cee3",
+                "marker":{
+                  "background-color":"#a6cee3",
+                  "border-color":"#a6cee3"
+                }
+              },
+              {
+                "values":vm.dataDaily[1],
+                "text":"New Wells",
+                "line-color":"#1f78b4",
+                "marker":{
+                  "background-color":"#1f78b4",
+                  "border-color":"#1f78b4"
+                }
+              },
+              {
+                "values":vm.dataDaily[2],
+                "text":"Total",
+                "line-color":"#b2df8a",
+                "marker":{
+                  "background-color":"#b2df8a",
+                  "border-color":"#b2df8a"
+                }
+              }]
+              };
             zingchart.render({
             	id : 'myChart2',
             	data : myConfig,

@@ -48,14 +48,19 @@
             "line-color":"black",
             "line-width":1,
             "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-          }
+          },
+          "thousands-separator": ","
         },
         "crosshair-x":{
           "plot-label":{
-            "multiple":true
+            "multiple":true,
+            "thousands-separator": ","
           }
         },
         "plot":{
+          "tooltip": {
+            "visible": false
+          },
           "line-width": 2,
           "marker":{
             "size":2
@@ -112,14 +117,19 @@
             "line-color":"black",
             "line-width":1,
             "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-          }
+          },
+          "thousands-separator": ","
         },
         "crosshair-x":{
           "plot-label":{
-            "multiple":true
+            "multiple":true,
+            "thousands-separator": ","
           }
         },
         "plot":{
+          "tooltip": {
+            "visible": false
+          },
           "line-width": 2,
           "marker":{
             "size":2
@@ -176,14 +186,19 @@
             "line-color":"black",
             "line-width":1,
             "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-          }
+          },
+          "thousands-separator": ","
         },
         "crosshair-x":{
           "plot-label":{
-            "multiple":true
+            "multiple":true,
+            "thousands-separator": ","
           }
         },
         "plot":{
+          "tooltip": {
+            "visible": false
+          },
           "line-width": 2,
           "marker":{
             "size":2
@@ -240,14 +255,19 @@
             "line-color":"black",
             "line-width":1,
             "line-style":"dotted" //"solid", "dotted", "dashed", "dashdot"
-          }
+          },
+          "thousands-separator": ","
         },
         "crosshair-x":{
           "plot-label":{
-            "multiple":true
+            "multiple":true,
+            "thousands-separator": ","
           }
         },
         "plot":{
+          "tooltip": {
+            "visible": false
+          },
           "line-width": 2,
           "marker":{
             "size":2

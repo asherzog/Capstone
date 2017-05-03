@@ -1,7 +1,9 @@
 <div class="text-center" ng-if="!$ctrl.printing">
-  <button class="btn btn-primary" ng-click="$ctrl.printer()">
-    Print
-  </button>
+  <div class="actions">
+    <button class="btn btn-primary" ng-click="$ctrl.printer()">
+      Print
+    </button>
+  </div>
 </div>
 <section class="container" ng-class="$ctrl.printingMargins">
   <div class="graph">

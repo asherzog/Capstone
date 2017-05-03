@@ -1,14 +1,16 @@
 <section class="home">
   <div class="text-center" ng-if="$ctrl.printing != 'printing'">
-    <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
-      Create
-    </button>
-    <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
-      {{$ctrl.btnText ? 'Edit' : 'Save'}}
-    </button>
-    <button class="btn btn-primary" ng-click="$ctrl.printer()">
-      Print
-    </button>
+    <div class="actions">
+      <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
+        Create
+      </button>
+      <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
+        {{$ctrl.btnText ? 'Edit' : 'Save'}}
+      </button>
+      <button class="btn btn-primary" ng-click="$ctrl.printer()">
+        Print
+      </button>
+    </div>
   </div>
   <div ng-repeat="rig in $ctrl.newRigs" id="table">
     <table class="table table-sm table-bordered" ng-class="$ctrl.printing">
@@ -19,7 +21,7 @@
         </tr>
       </thead>
       <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
-        <tr ng-repeat="well in rig.Wells" ng-class="{lightOrange: rig.RIG == 'Bullpen', completedColor: rig.RIG == 'Completed'}">
+        <tr ng-repeat="well in rig.Wells" ng-class="{lightOrange: rig.RIG.toLowerCase() == 'bullpen', completedColor: rig.RIG.toLowerCase() == 'completed'}">
           <td ng-hide="!$ctrl.options.disabled">
             <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
               x

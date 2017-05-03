@@ -53,14 +53,14 @@
           rig.Wells = alasql('SELECT * FROM ? ORDER BY new Date(SPUD)',[rig.Wells]);
         });
         rigs = rigs.sort((a,b) => {
-          if (b.RIG == 'Completed' || b.RIG == 'Bullpen') {
+          if (b.RIG.toLowerCase() == 'completed' || b.RIG.toLowerCase() == 'bullpen') {
             return -1;
           }
           else {
             return 1;
           };
         });
-        if (rigs[rigs.length - 2].RIG == 'Completed') {
+        if (rigs[rigs.length - 2].RIG.toLowerCase() == 'completed') {
           let temp = rigs[rigs.length - 2];
           rigs[rigs.length - 2] = rigs[rigs.length - 1];
           rigs[rigs.length - 1] = temp;

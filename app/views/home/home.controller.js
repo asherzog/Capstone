@@ -67,6 +67,7 @@
         }
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
+        document.getElementById('loading').remove("loader");
         waterService.getAllSystems()
           .then(response => {
             waterService.allSystems = response;

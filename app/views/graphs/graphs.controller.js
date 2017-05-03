@@ -264,7 +264,6 @@
           "toggle-action":"remove"
         },
         "scale-x":{
-          "labels": [],
           "guide":{
             "line-color":"black",
             "line-width":1,
@@ -326,8 +325,11 @@
                   if (typeof month.Total != 'number') {
                     month.Total = Number(month.Total.replace(',',''));
                   }
-                  return [month.Month, month.Total];
+                  return [new Date(month.Month).getTime(), month.Total];
                 });
+                return total;
+              })
+              .then(total => {
                 let colors = ["#ff6666","#00abb0","#6e9cdb","#28ffef","#f2b012","#811eae"];
                 myConfig["series"].push({
                   "aspect": "spline",
@@ -339,6 +341,12 @@
                     "border-color":colors[i]
                   }
                 });
+                myConfig["scale-x"]["min-value"] = total[0];
+                myConfig["scale-x"]["step"] = "month";
+                myConfig["scale-x"]["transform"] = {
+                  "type": "date",
+                  "all": "%m/%d/%y"
+                };
                 myConfigStacked["series"].push({
                   "aspect": "spline",
                   "stacked": true,
@@ -351,6 +359,12 @@
                     "border-color":colors[i]
                   }
                 });
+                myConfigStacked["scale-x"]["min-value"] = total[0];
+                myConfigStacked["scale-x"]["step"] = "month";
+                myConfigStacked["scale-x"]["transform"] = {
+                  "type": "date",
+                  "all": "%m/%d/%y"
+                };
                 i++;
                 return system;
               })
@@ -366,7 +380,7 @@
                       if (typeof month.Total != 'number') {
                         month.Total = Number(month.Total.replace(',',''));
                       }
-                      return [month.Day, month.Total];
+                      return [new Date(month.Day).getTime(), month.Total];
                     });
                     let colors = ["#ff6666","#00abb0","#6e9cdb","#28ffef","#f2b012","#811eae"];
                     myConfigDaily["series"].push({
@@ -379,6 +393,12 @@
                         "border-color":colors[i2]
                       }
                     });
+                    myConfigDaily["scale-x"]["min-value"] = totalDaily[0];
+                    myConfigDaily["scale-x"]["step"] = "day";
+                    myConfigDaily["scale-x"]["transform"] = {
+                      "type": "date",
+                      "all": "%m/%d/%y"
+                    };
                     myConfigDailyStacked["series"].push({
                       "aspect": "spline",
                       "stacked": true,
@@ -391,6 +411,12 @@
                         "border-color":colors[i2]
                       }
                     });
+                    myConfigDailyStacked["scale-x"]["min-value"] = totalDaily[0];
+                    myConfigDailyStacked["scale-x"]["step"] = "day";
+                    myConfigDailyStacked["scale-x"]["transform"] = {
+                      "type": "date",
+                      "all": "%m/%d/%y"
+                    };
                     i2++;
                     return totalDaily;
                   });

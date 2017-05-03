@@ -1,5 +1,5 @@
 <section class="home container">
-  <div class="text-center">
+  <div class="text-center" ng-if="$ctrl.printing != 'printing'">
     <div class="selectBox">
       <select class="form-control" id="tcs" ng-model="$ctrl.tc" name="tc" ng-change="$ctrl.selection($ctrl.tc)">
         <option ng-repeat="tc in $ctrl.tcs">{{tc}}</option>
@@ -9,11 +9,14 @@
       <button class="btn btn-success" ui-sref="addForm">
         Create
       </button>
-      <button class="btn btn-warning" ng-click="$ctrl.btnText = !$ctrl.btnText" >
+      <!-- <button class="btn btn-warning" ng-click="$ctrl.btnText = !$ctrl.btnText" >
         {{$ctrl.btnText ? 'Edit' : 'Save'}}
-      </button>
+      </button> -->
       <button class="btn btn-danger" ng-click="$ctrl.deleteTc()" ng-disabled="$ctrl.tcs.length < 2">
         Delete
+      </button>
+      <button class="btn btn-primary" ng-click="$ctrl.printer()">
+        Print
       </button>
     </div>
   </div>

@@ -14,8 +14,20 @@
     vm.data;
     vm.keys;
     vm.btnText = true;
-    vm.editing = false;
-    vm.blur = editing;
+    vm.printing = 'table-responsive';
+    // vm.editing = false;
+    // vm.blur = editing;
+
+    vm.printer = function() {
+      vm.printing = 'printing';
+      HomeService.printing = 'printing';
+      ipcRenderer.send('printingHome', 'please print')
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        vm.printing = 'table-responsive';
+        HomeService.printing = '';
+        $scope.$apply();
+      });
+    };
 
 
     vm.selection = function(name) {
@@ -57,12 +69,12 @@
         });
     };
 
-    function editing(well, value, column) {
-      console.log(well);
-      console.log(value);
-      console.log(column);
-      delete well.editing;
-    }
+    // function editing(well, value, column) {
+    //   console.log(well);
+    //   console.log(value);
+    //   console.log(column);
+    //   delete well.editing;
+    // }
 
   };
 }());

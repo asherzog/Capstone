@@ -1,4 +1,11 @@
-<section class="container" style="margin: 3em 0 5em 0">
+<div class="text-center" ng-if="!$ctrl.printing">
+  <div class="actions">
+    <button class="btn btn-primary" ng-click="$ctrl.printer()">
+      Print
+    </button>
+  </div>
+</div>
+<section class="container" ng-class="$ctrl.printingMargins">
   <div class="graph">
     <div class="loader text-center" id="loading"></div>
     <div class="graphItem" id="myChart" style="width: 80vw; height: 70vh;"></div>

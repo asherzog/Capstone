@@ -5,9 +5,26 @@
     .module('app')
     .controller('productionGraphController', productionGraphController);
 
-  function productionGraphController($http, $state, ProductionService, waterService) {
+  function productionGraphController($http, $state, ProductionService, HomeService, $scope) {
     const vm = this;
     vm.$onInit = loadData;
+    vm.printing = false;
+    vm.printingMargins = '';
+    const {ipcRenderer} = require('electron');
+
+
+    vm.printer = function() {
+      vm.printing = true;
+      vm.printingMargins = 'pMargins';
+      HomeService.printing = 'printing';
+      ipcRenderer.send('printingGraphs', 'ping');
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        vm.printing = false;
+        vm.printingMargins = '';
+        HomeService.printing = '';
+        $scope.$apply();
+      });
+    };
 
     function loadData() {
       var myConfig = {

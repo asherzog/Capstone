@@ -13,9 +13,20 @@
     vm.data;
     vm.keys;
     vm.btnText = true;
-    vm.editting = false;
-    vm.blur = editing;
     vm.displayed = 50;
+    vm.printing = '';
+
+    vm.printer = function() {
+      vm.displayed = vm.data.length
+      vm.printing = 'printing'
+      HomeService.printing = 'printing';
+      ipcRenderer.send('printingGraphs', 'ping');
+      ipcRenderer.on('wrote-pdf', function (event, path) {
+        vm.printing = ''
+        HomeService.printing = '';
+        $scope.$apply();
+      });
+    };
 
     vm.loadMore = function() {
       vm.displayed += 20;
@@ -50,16 +61,6 @@
         vm.tcs.splice(vm.tcs.indexOf(tc),1);
       }
     };
-
-    function editing(well, value, column) {
-      delete well.editing;
-      // console.log(well);
-      // $http.patch(`http://localhost:3000/tc/${well.TC}`, well)
-      //   .then(result => {
-      //     console.log(result);
-      //   })
-      well.Total_Liq = waterService.numberWithCommas((Number(well.Oil.replace(',', '')) + Number(well.Water.replace(',',''))));
-    }
 
     function loadTcs() {
       waterService.getAllTc()

@@ -82,9 +82,6 @@
         upload(uploadObj, `upload/wells`, true) //call upload function
           .then((data) => {
             console.log(data);
-            // setTimeout(() => {
-            //   $state.go('home', {}, {reload: true});
-            // },3000);
           });
       }
     };
@@ -117,16 +114,12 @@
           });
       } else {
         let newPdp = {
-          // PROPNUM: vm.pdpPropNum,
-          // SCENARIO: vm.pdpScenario,
           LEASE: vm.pdpLease,
-          // API: vm.pdpApi,
           OUTDATE: vm.pdpDate,
           Gross_Oil_Bbls: vm.pdpOil,
           Gross_Water_Bbls: vm.pdpWater,
           Gross_Gas_Mcf: vm.pdpGas,
           Net_Oil_Bbls: vm.pdpOilNet,
-          Net_Water_Bbls: vm.pdpWaterNet,
           Net_Gas_Mcf: vm.pdpGasNet,
           Water_System: vm.pdpSystem
         };

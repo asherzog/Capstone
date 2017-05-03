@@ -125,12 +125,6 @@
         </select>
       </div>
       <div class="form-group" ng-if="$ctrl.type == 'PDP'">
-        <label for="waterNet">Which column points to <b>Net Water</b>?</label>
-        <select class="form-control" id="waterNet" ng-model="$ctrl.pdpWaterNet" required="true" name="waterNet">
-          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-        </select>
-      </div>
-      <div class="form-group" ng-if="$ctrl.type == 'PDP'">
         <label for="gasNet">Which column points to <b>Net Gas</b>?</label>
         <select class="form-control" id="gasNet" ng-model="$ctrl.pdpGasNet" required="true" name="gasNet">
           <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
@@ -142,24 +136,6 @@
           <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
         </select>
       </div>
-      <!-- <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-        <label for="propNum">Which column points to <b>Prop Num</b>?</label>
-        <select class="form-control" id="propNum" ng-model="$ctrl.pdpPropNum" required="true" name="propNum">
-          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-        </select>
-      </div>
-      <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-        <label for="scenario">Which column points to <b>Scenario</b>?</label>
-        <select class="form-control" id="scenario" ng-model="$ctrl.pdpScenario" required="true" name="scenario">
-          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-        </select>
-      </div>
-      <div class="form-group" ng-show="$ctrl.type == 'PDP'">
-        <label for="Api">Which column points to <b>API</b>?</label>
-        <select class="form-control" id="Api" ng-model="$ctrl.pdpApi" required="true" name="Api">
-          <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
-        </select>
-      </div> -->
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
   </section>

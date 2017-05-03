@@ -145,7 +145,7 @@
         .then(response => {
           let rigs = [];
           response.forEach(rig => {
-            if (rig != 'Bullpen' && rig != 'Completion') {
+            if (rig != 'Bullpen' && rig != 'Completed') {
               rigs.push(rig);
             }
           });

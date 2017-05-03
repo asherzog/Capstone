@@ -341,7 +341,7 @@
                     "border-color":colors[i]
                   }
                 });
-                myConfig["scale-x"]["min-value"] = total[0];
+                myConfig["scale-x"]["min-value"] = total[0][0];
                 myConfig["scale-x"]["step"] = "month";
                 myConfig["scale-x"]["transform"] = {
                   "type": "date",
@@ -359,7 +359,7 @@
                     "border-color":colors[i]
                   }
                 });
-                myConfigStacked["scale-x"]["min-value"] = total[0];
+                myConfigStacked["scale-x"]["min-value"] = total[0][0];
                 myConfigStacked["scale-x"]["step"] = "month";
                 myConfigStacked["scale-x"]["transform"] = {
                   "type": "date",
@@ -393,7 +393,7 @@
                         "border-color":colors[i2]
                       }
                     });
-                    myConfigDaily["scale-x"]["min-value"] = totalDaily[0];
+                    myConfigDaily["scale-x"]["min-value"] = totalDaily[0][0];
                     myConfigDaily["scale-x"]["step"] = "day";
                     myConfigDaily["scale-x"]["transform"] = {
                       "type": "date",
@@ -411,7 +411,7 @@
                         "border-color":colors[i2]
                       }
                     });
-                    myConfigDailyStacked["scale-x"]["min-value"] = totalDaily[0];
+                    myConfigDailyStacked["scale-x"]["min-value"] = totalDaily[0][0];
                     myConfigDailyStacked["scale-x"]["step"] = "day";
                     myConfigDailyStacked["scale-x"]["transform"] = {
                       "type": "date",

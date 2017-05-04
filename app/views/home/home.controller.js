@@ -113,7 +113,7 @@
           }
         }
       }
-      loadData();
+      // loadData();
       waterService.getAllSystems()
         .then(response => {
           waterService.allSystems = response;
@@ -132,7 +132,7 @@
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
-          loadData();
+          // loadData();
         }
         vm.newRigs[0].Wells = rigArr;
       } else {
@@ -142,7 +142,7 @@
             rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
-          loadData();
+          // loadData();
         }
       }
     };

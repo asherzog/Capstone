@@ -34,6 +34,10 @@
       var myConfig = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Monthly Water Forecast",
           "color":"#333",
@@ -103,6 +107,10 @@
       var myConfigDaily = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Daily Water Forecast",
           "color":"#333",
@@ -172,6 +180,10 @@
       var myConfigStacked = {
         "background-color":"white",
         "type":"area",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Monthly Stacked Water Forecast",
           "color":"#333",
@@ -241,6 +253,10 @@
       var myConfigDailyStacked = {
         "background-color":"white",
         "type":"area",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Daily Stacked Water Forecast",
           "color":"#333",

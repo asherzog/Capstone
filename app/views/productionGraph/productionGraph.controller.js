@@ -30,6 +30,10 @@
       var myConfig = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Monthly BO",
           "color":"#333",
@@ -99,6 +103,10 @@
       var myConfig2 = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Monthly BOE",
           "color":"#333",
@@ -168,6 +176,10 @@
       var myConfig3 = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Daily BO",
           "color":"#333",
@@ -237,6 +249,10 @@
       var myConfig4 = {
         "background-color":"white",
         "type":"line",
+        "plotarea": {
+          marginLeft: "dynamic",
+          marginRight: "dynamic"
+        },
         "title":{
           "text":"Daily BOE",
           "color":"#333",

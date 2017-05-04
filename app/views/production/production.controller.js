@@ -20,12 +20,26 @@
     function loadData() {
       ProductionService.getMonthly($state.params.type.toLowerCase())
         .then(data => {
-          vm.monthlyData = data;
+          vm.monthlyData = data.map(obj => {
+            Object.keys(obj).forEach(key => {
+              if (typeof obj[key] == 'number') {
+                obj[key] = waterService.numberWithCommas(obj[key]);
+              }
+            });
+            return obj;
+          });
         })
         .then(() => {
           ProductionService.getDaily($state.params.type.toLowerCase())
           .then(data => {
-            vm.dailyData = data;
+            vm.dailyData = data.map(obj => {
+              Object.keys(obj).forEach(key => {
+                if (typeof obj[key] == 'number') {
+                  obj[key] = waterService.numberWithCommas(obj[key]);
+                }
+              });
+              return obj;
+            });
           });
         });
     };

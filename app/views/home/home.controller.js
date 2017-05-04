@@ -38,6 +38,7 @@
 
     function loadData() {
       HomeService.getAllWells().then(response => {
+        console.log(response);
         let rigs = alasql('SELECT RIG, ARRAY(_) AS Wells FROM ? GROUP BY RIG',[response]);
         vm.systems = [];
         rigs.forEach(rig => {

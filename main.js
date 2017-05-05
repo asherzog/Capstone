@@ -227,6 +227,13 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.on('exporting', (event, arg) => {
+  console.log(arg);
+  console.log('recieved');
+  shell.openItem(__dirname + '/test.xlsx');
+  event.sender.send('reply', 'got it');
+});
+
 ipcMain.on('printingHome', (event, arg) => {
   console.log(arg);
   const pdfPath = path.join(os.tmpdir(), 'print.pdf')

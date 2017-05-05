@@ -15,6 +15,7 @@
     vm.$onInit = loadData;
     vm.printing = 'table-responsive';
     vm.delete = deleteWell;
+    vm.export = exportData;
     vm.options = {
       disabled: false,
       connectWith: '.rig',
@@ -38,7 +39,6 @@
 
     function loadData() {
       HomeService.getAllWells().then(response => {
-        console.log(response);
         let rigs = alasql('SELECT RIG, ARRAY(_) AS Wells FROM ? GROUP BY RIG',[response]);
         vm.systems = [];
         rigs.forEach(rig => {
@@ -85,7 +85,7 @@
               vm.newRigs[i].Wells[j][key] = value;
               if (key == 'SPUD'){
                 for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
                   HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
                     console.log(response);
                   });
@@ -93,7 +93,7 @@
               }
               if (key == 'RIG'){
                 for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
                   HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
                     console.log(response);
                   });
@@ -101,7 +101,7 @@
               }
               if (key == 'SPUD-SPUD') {
                 for (var k = (j); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k]["SPUD-SPUD"]);
+                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
                   HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
                     console.log(response);
                   });
@@ -130,7 +130,7 @@
         rigArr[dropIndex].RIG = rigArr[0].RIG;
         for (var i = dropIndex; i < rigArr.length; i++) {
           if (i > 0) {
-            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
+            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
           // loadData();
@@ -140,7 +140,7 @@
         rigArr[dropIndex].RIG = rigArr[1].RIG;
         for (var i = dropIndex; i < rigArr.length; i++) {
           if (i > 0) {
-            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i]['SPUD-SPUD']);
+            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
           }
           HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
           // loadData();
@@ -162,6 +162,22 @@
           });
       }
     };
+
+
+    function exportData() {
+      HomeService.getAllWells().then(response => {
+        let data = response.map(well => {
+          delete well['_id'];
+          return well;
+        });
+        alasql('SELECT * INTO XLSX("test.xlsx",{headers:true}) FROM ?', [data]);
+        ipcRenderer.send('exporting', 'please export');
+        ipcRenderer.on('reply', (event, msg) => {
+          console.log(msg);
+        });
+      });
+    }
+
 
   };
 }());

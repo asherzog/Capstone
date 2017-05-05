@@ -10,11 +10,14 @@
       <button class="btn btn-primary" ng-click="$ctrl.printer()">
         Print
       </button>
+      <button class="btn btn-danger" ng-click="$ctrl.export()">
+        Export
+      </button>
     </div>
   </div>
   <div class="loader text-center" id="loading"></div>
   <div ng-repeat="rig in $ctrl.newRigs" id="table">
-    <table class="table table-sm table-bordered" ng-class="$ctrl.printing">
+    <table class="table table-sm table-bordered" ng-class="$ctrl.printing" id="test">
       <thead class="table-info">
         <tr>
           <th ng-hide="!$ctrl.options.disabled">Delete</th>

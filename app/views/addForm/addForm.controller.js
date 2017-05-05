@@ -43,12 +43,14 @@
             .then((response) => {
               if (response.length > 0) {
                 let min = new Date(response[0].SPUD);
+                let spudSpud = response[0]['SPUD-SPUD'];
                 response.forEach(well => {
                   if (new Date(well.SPUD).getTime() > min.getTime()) {
                     min = new Date(well.SPUD);
+                    spudSpud = vm.spudSpud;
                   }
                 });
-                well['SPUD'] = HomeService.convertDate(min, Number(vm.spudSpud));
+                well['SPUD'] = HomeService.convertDate(min, Number(spudSpud));
               } else {
                 well['SPUD'] = HomeService.convertDate(new Date(), Number(vm.spudSpud));
               }

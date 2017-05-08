@@ -230,7 +230,7 @@ app.on('activate', () => {
 ipcMain.on('exporting', (event, arg) => {
   console.log(arg);
   console.log('recieved');
-  shell.openItem(__dirname + '/test.xlsx');
+  shell.openItem('./test.xlsx');
   event.sender.send('reply', 'got it');
 });
 

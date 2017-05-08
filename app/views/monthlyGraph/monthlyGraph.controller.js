@@ -66,7 +66,7 @@
               marginRight: "dynamic"
             },
             "title":{
-              "text":"Monthly Water Forecast",
+              "text":`${system} Monthly Water Forecast`,
               "color":"#333",
               "background-color":"white",
               "width":"100%",
@@ -207,7 +207,7 @@
                   marginRight: "dynamic"
                 },
                 "title":{
-                  "text":"Daily Water Forecast",
+                  "text":`${system} Daily Water Forecast`,
                   "color":"#333",
                   "background-color":"white",
                   "width":"100%",

@@ -8,6 +8,7 @@
   function wellListController($http, $state, waterService, HomeService) {
     const vm = this;
     let system = $state.params.water;
+    vm.system = system;
     vm.wells = [];
 
     vm.orderFunction = function(well) {
@@ -23,7 +24,11 @@
         vm.newWells = response.map(well => {
           if (well.RIG != 'Bullpen') {
             if (!well.First_Production) {
-              well.First_Production = HomeService.convertDate(well.SPUD, 67);
+              if (well.COMPLETION) {
+                well.First_Production = HomeService.convertDate(well.COMPLETION, 7);
+              } else {
+                well.First_Production = HomeService.convertDate(well.SPUD, 67);
+              }
             }
             vm.wells.push({
               Well: well.WELL,
@@ -31,7 +36,7 @@
               First_Production: well.First_Production
             });
             return well.WELL;
-          }  
+          }
         });
         return vm.newWells;
       })

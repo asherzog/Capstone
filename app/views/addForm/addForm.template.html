@@ -141,7 +141,7 @@
   <section class="container formWrapper" ng-if="$ctrl.type == 'Well'" style="margin-top: 4em">
     <form name="$ctrl.bulk" novalidate ng-submit="$ctrl.bulkLoad()">
       <div class="form-group">
-        <label for="uploadBulk"><strong>Upload Bulk {{$ctrl.type}}</strong></label>
+        <label for="uploadBulk"><strong>Upload New Drill Schedule</strong><br>**this will replace current schedule**</label>
         <input type="file" ngf-select ng-model="$ctrl.bulkFile" name="bulkFile" id="uploadBulk" required="true">
       </div>
       <button type="submit" class="btn btn-success">Submit</button>

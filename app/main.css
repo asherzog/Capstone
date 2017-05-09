@@ -87,6 +87,7 @@ nav .container {
   margin-top: 0.5em;
   margin-left: 0.75em;
 }
+
 .table {
   font-size: 0.75em;
 }
@@ -99,6 +100,11 @@ nav .container {
 
 .printing {
   zoom: 25%;
+  -webkit-print-color-adjust: exact !important;
+}
+
+.printingGraphs {
+  zoom: 75%;
   -webkit-print-color-adjust: exact !important;
 }
 

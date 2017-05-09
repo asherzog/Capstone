@@ -12,20 +12,18 @@
     vm.dailyData = [];
     vm.series = [];
     vm.printing = false;
-    vm.printingMargins = '';
     const {ipcRenderer} = require('electron');
 
 
     vm.printer = function() {
       vm.printing = true;
-      vm.printingMargins = 'pMargins'
       HomeService.printing = 'printing';
-      ipcRenderer.send('printingGraphs', 'ping');
+      ipcRenderer.send('printingHome', 'ping')
       ipcRenderer.on('wrote-pdf', function (event, path) {
         vm.printing = false;
-        vm.printingMargins = '';
         HomeService.printing = '';
         $scope.$apply();
+        // document.getElementById('pdf-path').innerHTML = message
       });
     };
 

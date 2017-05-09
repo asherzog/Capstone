@@ -83,28 +83,30 @@
           if (vm.newRigs[i].Wells[j]._id == well._id) {
             for(var key in column) {
               vm.newRigs[i].Wells[j][key] = value;
-              if (key == 'SPUD'){
-                for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
-                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
-                    console.log(response);
-                  });
+              if (vm.newRigs[i].RIG.toLowerCase() != "completed") {
+                if (key == 'SPUD'){
+                  for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
+                    vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
+                    HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                      console.log(response);
+                    });
+                  }
                 }
-              }
-              if (key == 'RIG'){
-                for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
-                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
-                    console.log(response);
-                  });
+                if (key == 'RIG'){
+                  for (var k = (j + 1); k < vm.newRigs[i].Wells.length; k++) {
+                    vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
+                    HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                      console.log(response);
+                    });
+                  }
                 }
-              }
-              if (key == 'SPUD-SPUD') {
-                for (var k = (j); k < vm.newRigs[i].Wells.length; k++) {
-                  vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
-                  HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
-                    console.log(response);
-                  });
+                if (key == 'SPUD-SPUD') {
+                  for (var k = (j); k < vm.newRigs[i].Wells.length; k++) {
+                    vm.newRigs[i].Wells[k].SPUD = HomeService.convertDate(vm.newRigs[i].Wells[k -1].SPUD, +vm.newRigs[i].Wells[k -1]["SPUD-SPUD"]);
+                    HomeService.updateWells(vm.newRigs[i].Wells[k]).then(response => {
+                      console.log(response);
+                    });
+                  }
                 }
               }
             }
@@ -128,22 +130,30 @@
       rigArr[dropIndex].COMPLETION = null;
       if (dropIndex != 0) {
         rigArr[dropIndex].RIG = rigArr[0].RIG;
-        for (var i = dropIndex; i < rigArr.length; i++) {
-          if (i > 0) {
-            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
+        if (rigArr[dropIndex].RIG.toLowerCase() != "completed") {
+          for (var i = dropIndex; i < rigArr.length; i++) {
+            if (i > 0) {
+              rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
+            }
+            HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
+            // loadData();
           }
-          HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
-          // loadData();
+        } else {
+          HomeService.updateWells(rigArr[dropIndex]).then(response => {console.log(response);});
         }
         vm.newRigs[0].Wells = rigArr;
       } else {
         rigArr[dropIndex].RIG = rigArr[1].RIG;
-        for (var i = dropIndex; i < rigArr.length; i++) {
-          if (i > 0) {
-            rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
+        if (rigArr[dropIndex].RIG.toLowerCase() != "completed") {
+          for (var i = dropIndex; i < rigArr.length; i++) {
+            if (i > 0) {
+              rigArr[i].SPUD = HomeService.convertDate(rigArr[i -1].SPUD, +rigArr[i -1]['SPUD-SPUD']);
+            }
+            HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
+            // loadData();
           }
-          HomeService.updateWells(rigArr[i]).then(response => {console.log(response);});
-          // loadData();
+        } else {
+          HomeService.updateWells(rigArr[dropIndex]).then(response => {console.log(response);});
         }
       }
     };

@@ -11,6 +11,7 @@
     vm.newRigs;
     vm.btnText = true;
     vm.editting = false;
+    vm.hidden = [];
     vm.blur = editing;
     vm.$onInit = loadData;
     vm.printing = 'table-responsive';
@@ -34,6 +35,14 @@
         $scope.$apply();
         // document.getElementById('pdf-path').innerHTML = message
       });
+    };
+
+    vm.clicked = function(column) {
+      vm.hidden.push(column);
+    };
+
+    vm.open = function(column) {
+      vm.hidden.splice(vm.hidden.indexOf(column),1);
     };
 
 

@@ -20,18 +20,23 @@
     <table class="table table-sm table-bordered" ng-class="$ctrl.printing" id="test">
       <thead class="table-info pointer">
         <tr>
+          <th ng-if="$ctrl.printing != 'printing'"></th>
           <th ng-hide="!$ctrl.options.disabled">Delete</th>
           <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys"><span ng-hide="$ctrl.hidden.includes(key)" ng-click="$ctrl.clicked(key)">{{key}}</span><span ng-show="$ctrl.hidden.includes(key)" ng-click="$ctrl.open(key)">></span></th>
         </tr>
       </thead>
       <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
         <tr ng-repeat="well in rig.Wells" ng-class="{lightOrange: rig.RIG.toLowerCase() == 'bullpen', completedColor: rig.RIG.toLowerCase() == 'completed'}">
+          <td class="pointer" ng-if="$ctrl.printing != 'printing'">
+            <span ng-hide="$ctrl.hiddenRows.includes(well)" ng-click="$ctrl.clickedRow(well)">-</span>
+            <span ng-show="$ctrl.hiddenRows.includes(well)" ng-click="$ctrl.openRow(well)">^</span>
+          </td>
           <td ng-hide="!$ctrl.options.disabled">
             <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
               x
             </button>
           </td>
-          <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''"
+          <td ng-repeat="(key, value) in well" ng-hide="key == '_id' || $ctrl.hiddenRows.includes(well)" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''"
               ng-class="{orange: value == '7500', purple: value == '5000', blue: value == '10000', green: key == 'FULL_RTD', lightGreen: key == 'MINERAL_RTD', grab: !$ctrl.options.disabled}">
           <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
           <p ng-if="!well.editing[key]" ng-hide="$ctrl.hidden.includes(key)">

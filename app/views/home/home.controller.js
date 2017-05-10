@@ -12,6 +12,7 @@
     vm.btnText = true;
     vm.editting = false;
     vm.hidden = [];
+    vm.hiddenRows = [];
     vm.blur = editing;
     vm.$onInit = loadData;
     vm.printing = 'table-responsive';
@@ -43,6 +44,14 @@
 
     vm.open = function(column) {
       vm.hidden.splice(vm.hidden.indexOf(column),1);
+    };
+
+    vm.clickedRow = function(well) {
+      vm.hiddenRows.push(well);
+    };
+
+    vm.openRow = function(well) {
+      vm.hiddenRows.splice(vm.hiddenRows.indexOf(well),1);
     };
 
     function loadData() {

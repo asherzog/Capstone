@@ -54,7 +54,7 @@
         <label for="upload"> Upload New {{$ctrl.type}}</label>
         <input type="file" ngf-select ng-model="$ctrl.file" name="file" id="upload" required="true">
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success pointer">Submit</button>
     </form>
   </section>
 
@@ -132,7 +132,7 @@
           <option ng-repeat="option in $ctrl.formData.data">{{option}}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success pointer">Submit</button>
     </form>
   </section>
 
@@ -144,7 +144,7 @@
         <label for="uploadBulk"><strong>Upload New Drill Schedule</strong><br>**this will replace current schedule**</label>
         <input type="file" ngf-select ng-model="$ctrl.bulkFile" name="bulkFile" id="uploadBulk" required="true">
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success pointer">Submit</button>
     </form>
   </section>
 </div>

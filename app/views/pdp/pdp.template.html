@@ -6,16 +6,13 @@
       </select>
     </div>
     <div class="actions">
-      <button class="btn btn-success" ui-sref="addForm">
+      <button class="btn btn-success pointer" ui-sref="addForm">
         Create
       </button>
-      <!-- <button class="btn btn-warning" ng-click=" $ctrl.btnText = !$ctrl.btnText; pdp.editing[key] = !pdp.editing[key]" >
-        {{$ctrl.btnText ? 'Edit' : 'Save'}}
-      </button> -->
-      <button class="btn btn-danger" ng-click="$ctrl.deletePdp()" ng-disabled="$ctrl.pdps.length < 2">
+      <button class="btn btn-danger pointer" ng-click="$ctrl.deletePdp()" ng-disabled="$ctrl.pdps.length < 2">
         Delete
       </button>
-      <button class="btn btn-primary" ng-click="$ctrl.printer()">
+      <button class="btn btn-primary pointer" ng-click="$ctrl.printer()">
         Print
       </button>
     </div>

@@ -142,18 +142,39 @@ nav .container {
 }
 .loader {
   border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
+  border-radius: 90%;
+  width: 8em;
+  height: 8em;
   text-align: center;
   margin: auto;
-  animation: spin 2s linear infinite;
+  animation: spin 2.5s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+    border-top-color: #26d629;
+    border-right-color: #07efdf;
+    border-bottom-color: #ad07ef;
+    border-left-color: #ef0707;
+    border-style: dotted;
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-color: #ad07ef;
+    border-left-color: #07efdf;
+    border-right-color: #ef0707;
+    border-bottom-color: #26d629;
+    border-style: solid;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-top-color: #26d629;
+    border-right-color: #07efdf;
+    border-bottom-color: #ad07ef;
+    border-left-color: #ef0707;
+    border-style: dotted;
+  }
 }
 
 @media print {

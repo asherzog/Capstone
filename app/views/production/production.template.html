@@ -7,7 +7,7 @@
   <div style="display: flex; flex-direction: column" style="margin-top: 2em;">
     <div id="table2" ng-if="!$ctrl.daily">
       <div style="display: flex; justify-content: space-between">
-        <button class="btn btn-sm btn-success" ng-click="$ctrl.btnText = !$ctrl.btnText; $ctrl.daily = !$ctrl.daily">
+        <button class="btn btn-sm btn-success pointer" ng-click="$ctrl.btnText = !$ctrl.btnText; $ctrl.daily = !$ctrl.daily">
           {{$ctrl.btnText ? 'Daily' : 'Monthly'}}
         </button>
         <div class="text-center">

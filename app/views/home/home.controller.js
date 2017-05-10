@@ -55,6 +55,17 @@
       vm.hiddenRows.splice(vm.hiddenRows.indexOf(well),1);
     };
 
+    vm.addColumn = function(column) {
+      console.log(column);
+      console.log(vm.newRigs);
+    }
+
+    vm.deleteColumn = function(column) {
+      if(confirm(`Delete ${column} column?`)){
+        console.log('deleted!');
+      }
+    };
+
     function loadData() {
       HomeService.getAllWells().then(response => {
         let rigs = alasql('SELECT RIG, ARRAY(_) AS Wells FROM ? GROUP BY RIG',[response]);

@@ -25,7 +25,14 @@
         <tr>
           <th ng-if="$ctrl.printing != 'printing'"></th>
           <th ng-hide="!$ctrl.options.disabled">Delete</th>
-          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys"><span ng-hide="$ctrl.hidden.includes(key)" ng-click="$ctrl.clicked(key)">{{key}}</span><span ng-show="$ctrl.hidden.includes(key)" ng-click="$ctrl.open(key)">></span></th>
+          <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys" ng-mouseenter="$ctrl.hidden.includes(key) ? '' : show=true;" ng-mouseleave="show=false;">
+            <div style="display: flex; justify-content: space-between">
+              <span ng-if="show" ng-click="$ctrl.deleteColumn(key)">x</span>
+              <span ng-if="show" ng-click="$ctrl.addColumn(key)">></span>
+            </div>
+            <span ng-hide="$ctrl.hidden.includes(key)" ng-click="$ctrl.clicked(key)">{{key}}</span>
+            <span ng-show="$ctrl.hidden.includes(key)" ng-click="$ctrl.open(key)">></span>
+          </th>
         </tr>
       </thead>
       <tbody ui-sortable="$ctrl.options" ng-model=rig.Wells class="rig">
@@ -35,7 +42,7 @@
             <span ng-show="$ctrl.hiddenRows.includes(well)" ng-click="$ctrl.openRow(well)">^</span>
           </td>
           <td ng-hide="!$ctrl.options.disabled">
-            <button class="btn btn-danger" ng-click="$ctrl.delete(well)">
+            <button class="btn btn-danger pointer" ng-click="$ctrl.delete(well)">
               x
             </button>
           </td>

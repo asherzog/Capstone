@@ -9,6 +9,20 @@ body {
   z-index: 9999;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.grab {
+  cursor: -webkit-grab !important;
+  cursor:-moz-grab !important;
+}
+
+.grab:active {
+  cursor: -webkit-grabbing !important;
+  cursor:-moz-grabbing !important;
+}
+
 .graph {
   margin-left: 0;
 }

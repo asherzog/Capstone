@@ -1,17 +1,17 @@
 <nav class="navbar navbar-default navbar-fixed-top" ng-if="$ctrl.printing != 'printing'">
   <div class="container">
     <div class="buttons" style="display: flex">
-      <button class="btn btn-info" ui-sref="home" style="margin: 2em 2em 0 0;">
+      <button class="btn btn-info pointer" ui-sref="home" style="margin: 2em 2em 0 0;">
         Home
       </button>
       <div style="display: flex; flex-direction: column;">
         <div style="display: flex">
-          <button class="btn btn-success" ui-sref="graphs">
+          <button class="btn btn-success pointer" ui-sref="graphs">
             View All
           </button>
           <div ng-repeat="system in $ctrl.systems" style="display: flex">
             <a ui-sref="water({water: system})">
-              <button type="button" class="btn btn-success">
+              <button type="button" class="btn btn-success pointer">
                 {{system}}
               </button>
             </a>
@@ -19,22 +19,22 @@
         </div>
         <div>
           <a ui-sref="tc">
-            <button type="button" class="btn btn-warning">
+            <button type="button" class="btn btn-warning pointer">
               Type Curves
             </button>
           </a>
           <a ui-sref="pdp">
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger pointer">
               PDP
             </button>
           </a>
           <a ui-sref="production({type:'Gross'})">
-            <button type="button" class="btn btn-info">
+            <button type="button" class="btn btn-info pointer">
               Gross Production
             </button>
           </a>
           <a ui-sref="production({type:'Net'})">
-            <button type="button" class="btn btn-info">
+            <button type="button" class="btn btn-info pointer">
               Net Production
             </button>
           </a>

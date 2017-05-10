@@ -45,7 +45,6 @@
       vm.hidden.splice(vm.hidden.indexOf(column),1);
     };
 
-
     function loadData() {
       HomeService.getAllWells().then(response => {
         let rigs = alasql('SELECT RIG, ARRAY(_) AS Wells FROM ? GROUP BY RIG',[response]);

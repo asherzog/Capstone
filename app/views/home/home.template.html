@@ -1,16 +1,16 @@
 <section class="home">
   <div class="text-center" ng-if="$ctrl.printing != 'printing'">
     <div class="actions">
-      <button class="btn btn-success" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
+      <button class="btn btn-success pointer" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled" ui-sref="addForm">
         Create
       </button>
-      <button class="btn btn-warning" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
+      <button class="btn btn-warning pointer" ng-click="$ctrl.options.disabled = !$ctrl.options.disabled; $ctrl.btnText = !$ctrl.btnText; well.editing[key] = !well.editing[key]" >
         {{$ctrl.btnText ? 'Edit' : 'Save'}}
       </button>
-      <button class="btn btn-primary" ng-click="$ctrl.printer()">
+      <button class="btn btn-primary pointer" ng-click="$ctrl.printer()">
         Print
       </button>
-      <button class="btn btn-danger" ng-click="$ctrl.export()">
+      <button class="btn btn-danger pointer" ng-click="$ctrl.export()">
         Export
       </button>
     </div>
@@ -18,7 +18,7 @@
   <div class="loader text-center" id="loading"></div>
   <div ng-repeat="rig in $ctrl.newRigs" id="table">
     <table class="table table-sm table-bordered" ng-class="$ctrl.printing" id="test">
-      <thead class="table-info">
+      <thead class="table-info pointer">
         <tr>
           <th ng-hide="!$ctrl.options.disabled">Delete</th>
           <th ng-repeat="key in $ctrl.keys" ng-hide="key == '_id'" id="tKeys"><span ng-hide="$ctrl.hidden.includes(key)" ng-click="$ctrl.clicked(key)">{{key}}</span><span ng-show="$ctrl.hidden.includes(key)" ng-click="$ctrl.open(key)">></span></th>
@@ -32,7 +32,7 @@
             </button>
           </td>
           <td ng-repeat="(key, value) in well" ng-hide="key == '_id'" ng-click="$ctrl.options.disabled ? well.editing[key] = true : ''"
-              ng-class="{orange: value == '7500', purple: value == '5000', blue: value == '10000', green: key == 'FULL_RTD', lightGreen: key == 'MINERAL_RTD'}">
+              ng-class="{orange: value == '7500', purple: value == '5000', blue: value == '10000', green: key == 'FULL_RTD', lightGreen: key == 'MINERAL_RTD', grab: !$ctrl.options.disabled}">
           <input ng-if="well.editing[key]" placeholder="{{value}}" ng-blur="$ctrl.blur(well, well[key], well.editing)" ng-model="well[key]">
           <p ng-if="!well.editing[key]" ng-hide="$ctrl.hidden.includes(key)">
             {{value}}

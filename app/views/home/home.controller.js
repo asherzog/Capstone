@@ -11,6 +11,7 @@
     vm.newRigs;
     vm.btnText = true;
     vm.editting = false;
+    vm.loading = true;
     vm.hidden = [];
     vm.hiddenRows = [];
     vm.blur = editing;
@@ -85,7 +86,7 @@
         }
         vm.newRigs = rigs;
         vm.keys = Object.keys(vm.newRigs[0].Wells[0]);
-        document.getElementById('loading').remove("loader");
+        vm.loading = false;
         waterService.getAllSystems()
           .then(response => {
             waterService.allSystems = response;

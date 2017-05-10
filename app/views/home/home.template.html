@@ -15,7 +15,10 @@
       </button>
     </div>
   </div>
-  <div class="loader text-center" id="loading"></div>
+  <div ng-if="$ctrl.loading" class="text-center">
+    <div class="loader text-center" id="loading"></div>
+    This may take some time to calculate...
+  </div>
   <div ng-repeat="rig in $ctrl.newRigs" id="table">
     <table class="table table-sm table-bordered" ng-class="$ctrl.printing" id="test">
       <thead class="table-info pointer">

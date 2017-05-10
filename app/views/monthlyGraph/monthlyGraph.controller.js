@@ -12,6 +12,7 @@
     vm.$onInit = loadData;
     vm.monthly;
     vm.printing = false;
+    vm.loading = true;
     vm.myJson = {};
     const {ipcRenderer} = require('electron');
 
@@ -158,13 +159,6 @@
             }
           }]
           };
-        zingchart.render({
-        	id : 'myChart',
-        	data : myConfig,
-        	height: "100%",
-        	width: "100%"
-        });
-
           return vm.data;
         })
         .then(() => {
@@ -196,7 +190,6 @@
                 }
                 return month.Total;
               });
-              document.getElementById('loading').remove("loader");
               vm.dataDaily = [pdp, wells, total];
 
               var myConfig = {
@@ -296,15 +289,19 @@
                 }
               }]
               };
-            zingchart.render({
-            	id : 'myChart2',
-            	data : myConfig,
-            	height: "100%",
-            	width: "100%"
-            });
-
-
-
+              zingchart.render({
+              	id : 'myChart',
+              	data : myConfig,
+              	height: "100%",
+              	width: "100%"
+              });
+              zingchart.render({
+              	id : 'myChart2',
+              	data : myConfig,
+              	height: "100%",
+              	width: "100%"
+              });
+              vm.loading = false;
               return vm.dataDaily;
             });
         });

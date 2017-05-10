@@ -10,6 +10,8 @@
     vm.$onInit = loadData;
     vm.printing = false;
     vm.printingMargins = '';
+    vm.loading = true;
+    const type = $state.params.type.toLowerCase();
     const {ipcRenderer} = require('electron');
 
 
@@ -319,7 +321,7 @@
         },
         "series":[]
       };
-      ProductionService.getMonthly($state.params.type.toLowerCase())
+      ProductionService.getMonthly(type)
         .then(data => {
           let pdpBo = data.map(month => {
             if (typeof month.PDP_Oil != 'number') {
@@ -419,7 +421,7 @@
           });
         })
         .then(() => {
-          ProductionService.getDaily($state.params.type.toLowerCase())
+          ProductionService.getDaily(type)
           .then(data => {
             let pdpBo = data.map(Day => {
               if (typeof Day.PDP_Oil != 'number') {
@@ -517,6 +519,8 @@
                 "border-color":"#6e9cdb"
               }
             });
+          })
+          .then(() => {
             zingchart.render({
               id : 'myChart',
               data : myConfig,
@@ -541,7 +545,7 @@
               height: "100%",
               width: "100%"
             });
-            document.getElementById('loading').remove("loader");
+            vm.loading = false;
           });
         });
     }

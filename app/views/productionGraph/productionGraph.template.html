@@ -7,7 +7,10 @@
 </div>
 <section ng-class="$ctrl.printingMargins">
   <div class="graph">
-    <div class="loader text-center" id="loading"></div>
+    <div ng-if="$ctrl.loading" class="text-center">
+      <div class="loader text-center" id="loading"></div>
+      This may take some time to calculate...
+    </div>
     <div class="graphItem" id="myChart" style="width: 80vw; height: 70vh;"></div>
     <div class="graphItem" id="myChart3" style="width: 80vw; height: 70vh;"></div>
     <div class="graphItem" id="myChart2" style="width: 80vw; height: 70vh;"></div>

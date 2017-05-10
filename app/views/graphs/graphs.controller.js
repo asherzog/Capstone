@@ -12,6 +12,7 @@
     vm.dailyData = [];
     vm.series = [];
     vm.printing = false;
+    vm.loading = true;
     const {ipcRenderer} = require('electron');
 
 
@@ -327,8 +328,8 @@
         .then(systems => {
           var i = 0;
           var i2 = 0;
-          systems.forEach(system => {
-            waterService.getWaterMonthly(system)
+          let mapped = systems.map(system => {
+            return waterService.getWaterMonthly(system)
               .then(response => {
                 response = response.sort(function(a, b) {
                   a = new Date(a.Month);
@@ -434,39 +435,42 @@
                     i2++;
                     return totalDaily;
                   });
-              })
-              .then(() => {
-                zingchart.render({
-                  id : 'myChart',
-                  data : myConfig,
-                  height: "100%",
-                  width: "100%"
-                });
-                zingchart.render({
-                  id : 'myChart3',
-                  data : myConfigStacked,
-                  height: "100%",
-                  width: "100%"
-                });
-                zingchart.render({
-                  id : 'myChart2',
-                  data : myConfigDaily,
-                  height: "100%",
-                  width: "100%"
-                });
-                zingchart.render({
-                  id : 'myChart4',
-                  data : myConfigDailyStacked,
-                  height: "100%",
-                  width: "100%"
-                });
-                if (document.getElementById('loading').classList.contains("loader")) {
-                  document.getElementById('loading').remove("loader");
-                }
               });
           });
-          return vm.data;
-        });
+          return mapped;
+        })
+        .then((mapped) => {
+          return Promise.all(mapped)
+            .then(() => {
+              zingchart.render({
+                id : 'myChart',
+                data : myConfig,
+                height: "100%",
+                width: "100%"
+              });
+              zingchart.render({
+                id : 'myChart3',
+                data : myConfigStacked,
+                height: "100%",
+                width: "100%"
+              });
+              zingchart.render({
+                id : 'myChart2',
+                data : myConfigDaily,
+                height: "100%",
+                width: "100%"
+              });
+              zingchart.render({
+                id : 'myChart4',
+                data : myConfigDailyStacked,
+                height: "100%",
+                width: "100%"
+              });
+            });
+        })
+        .then(() => {
+          vm.loading = false;
+        })
     }
 
   }

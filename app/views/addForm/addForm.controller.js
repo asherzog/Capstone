@@ -81,9 +81,13 @@
           item: vm.type,
           file: vm.bulkFile
         };
-        upload(uploadObj, `upload/wells`, true) //call upload function
+        return upload(uploadObj, `upload/wells`, true) //call upload function
           .then((data) => {
             console.log(data);
+            return data;
+          })
+          .then(() => {
+            $state.go('home');
           });
       }
     };

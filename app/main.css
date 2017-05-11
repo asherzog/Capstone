@@ -35,10 +35,7 @@ nav {
   background: linear-gradient(#2174ad,#376379);
   height: 20%;
 }
-nav .container {
-  display: flex;
-  justify-content: space-around;
-}
+
 .buttons {
   top: 50%;
   align-self: center;
@@ -93,9 +90,10 @@ nav .container {
   background-image: url('./assets/Centennial-logo.png');
   background-repeat: no-repeat;
   background-size: contain;
-  margin-top: 0.25em;
+  margin-top: 3em;
   height: auto;
-  width: 25%;
+  min-width: 15%;
+  max-width: 25%;
 }
 .home {
   margin-top: 0.5em;

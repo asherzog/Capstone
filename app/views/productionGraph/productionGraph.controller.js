@@ -17,12 +17,10 @@
 
     vm.printer = function() {
       vm.printing = true;
-      vm.printingMargins = 'pMargins';
       HomeService.printing = 'printing';
-      ipcRenderer.send('printingGraphs', 'ping');
+      ipcRenderer.send('printingHome', 'ping')
       ipcRenderer.on('wrote-pdf', function (event, path) {
         vm.printing = false;
-        vm.printingMargins = '';
         HomeService.printing = '';
         $scope.$apply();
       });
@@ -37,7 +35,7 @@
           marginRight: "dynamic"
         },
         "title":{
-          "text":"Monthly BO",
+          "text":`${$state.params.type} Monthly BO`,
           "color":"#333",
           "background-color":"white",
           "width":"100%",
@@ -110,7 +108,7 @@
           marginRight: "dynamic"
         },
         "title":{
-          "text":"Monthly BOE",
+          "text":`${$state.params.type} Monthly BOE`,
           "color":"#333",
           "background-color":"white",
           "width":"100%",
@@ -183,7 +181,7 @@
           marginRight: "dynamic"
         },
         "title":{
-          "text":"Daily BO",
+          "text":`${$state.params.type} Daily BO`,
           "color":"#333",
           "background-color":"white",
           "width":"100%",
@@ -256,7 +254,7 @@
           marginRight: "dynamic"
         },
         "title":{
-          "text":"Daily BOE",
+          "text":`${$state.params.type} Daily BOE`,
           "color":"#333",
           "background-color":"white",
           "width":"100%",

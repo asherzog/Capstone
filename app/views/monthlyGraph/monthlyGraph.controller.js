@@ -25,7 +25,6 @@
         vm.printing = false;
         HomeService.printing = '';
         $scope.$apply();
-        // document.getElementById('pdf-path').innerHTML = message
       });
     };
 
@@ -159,9 +158,9 @@
             }
           }]
           };
-          return vm.data;
+          return myConfig;
         })
-        .then(() => {
+        .then((myConfig) => {
           waterService.getWaterDaily(system)
             .then(response => {
               response = response.sort(function(a, b) {
@@ -192,7 +191,7 @@
               });
               vm.dataDaily = [pdp, wells, total];
 
-              var myConfig = {
+              var myConfigDialy = {
                 "background-color":"white",
                 "type":"line",
                 "plotarea": {
@@ -297,7 +296,7 @@
               });
               zingchart.render({
               	id : 'myChart2',
-              	data : myConfig,
+              	data : myConfigDialy,
               	height: "100%",
               	width: "100%"
               });

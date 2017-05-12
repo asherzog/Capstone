@@ -68,6 +68,9 @@
 
     function loadData() {
       HomeService.getAllWells().then(response => {
+        if (response.length == 0) {
+          $state.go('addForm');
+        };
         let rigs = alasql('SELECT RIG, ARRAY(_) AS Wells FROM ? GROUP BY RIG',[response]);
         vm.systems = [];
         rigs.forEach(rig => {

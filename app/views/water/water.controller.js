@@ -15,9 +15,9 @@
       $http.get(`http://localhost:3000/waterSystem/monthly/${system}`)
         .then(response => {
           vm.same = response.data.map(month => {
-            month.New_Wells = newNum(month.New_Wells);
-            month.PDP = newNum(month.PDP);
-            month.Total = newNum(month.Total);
+            month.New_Wells = newNum(Math.round(month.New_Wells));
+            month.PDP = newNum(Math.round(month.PDP));
+            month.Total = newNum(Math.round(month.Total));
             return month;
           }).sort(function(a, b) {
             a = new Date(a.Month);

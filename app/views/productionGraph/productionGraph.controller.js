@@ -32,7 +32,7 @@
         "type":"line",
         "plotarea": {
           marginLeft: "dynamic",
-          marginRight: "dynamic"
+          marginRight: "10%"
         },
         "title":{
           "text":`${$state.params.type} Monthly BO`,
@@ -42,8 +42,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":"1x3",
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -105,7 +106,7 @@
         "type":"line",
         "plotarea": {
           marginLeft: "dynamic",
-          marginRight: "dynamic"
+          marginRight: "10%"
         },
         "title":{
           "text":`${$state.params.type} Monthly BOE`,
@@ -115,8 +116,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":"1x3",
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -178,7 +180,7 @@
         "type":"line",
         "plotarea": {
           marginLeft: "dynamic",
-          marginRight: "dynamic"
+          marginRight: "10%"
         },
         "title":{
           "text":`${$state.params.type} Daily BO`,
@@ -188,8 +190,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":"1x3",
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -251,7 +254,7 @@
         "type":"line",
         "plotarea": {
           marginLeft: "dynamic",
-          marginRight: "dynamic"
+          marginRight: "10%"
         },
         "title":{
           "text":`${$state.params.type} Daily BOE`,
@@ -261,8 +264,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":"1x3",
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -323,7 +327,7 @@
         .then(data => {
           let pdpBo = data.map(month => {
             if (typeof month.PDP_Oil != 'number') {
-              month.PDP_Oil = Number(month.PDP_Oil.replace(',',''));
+              month.PDP_Oil = Math.round(Number(month.PDP_Oil.replace(',','')));
             }
             return [month.Month, month.PDP_Oil];
           });
@@ -341,7 +345,7 @@
           });
           let pdpBoe = data.map(month => {
             if (typeof month.PDP_BOE != 'number') {
-              month.PDP_BOE = Number(month.PDP_BOE.replace(',',''));
+              month.PDP_BOE = Math.round(Number(month.PDP_BOE.replace(',','')));
             }
             return [month.Month, month.PDP_BOE];
           });
@@ -353,7 +357,7 @@
           });
           let totalBoe = data.map(month => {
             if (typeof month.Total_BOE != 'number') {
-              month.Total_BOE = Number(month.Total_BOE.replace(',',''));
+              month.Total_BOE = Math.round(Number(month.Total_BOE.replace(',','')));
             }
             return [month.Month, month.Total_BOE];
           });

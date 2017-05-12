@@ -11,6 +11,7 @@
     vm.data = [];
     vm.dailyData = [];
     vm.series = [];
+    vm.length = vm.series.length;
     vm.printing = false;
     vm.loading = true;
     const {ipcRenderer} = require('electron');
@@ -45,8 +46,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":`1x${vm.length}`,
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -118,8 +120,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":`1x${vm.length}`,
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -191,8 +194,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":`1x${vm.length}`,
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -264,8 +268,9 @@
           "text-align":"center",
         },
         "legend":{
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":`1x${vm.length}`,
+          "align": "center",
+          "margin-top":"10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -338,7 +343,9 @@
                 });
                 let total = response.map(month => {
                   if (typeof month.Total != 'number') {
-                    month.Total = Number(month.Total.replace(',',''));
+                    month.Total = Math.round(Number(month.Total.replace(',','')));
+                  } else {
+                    month.Total = Math.round(month.Total);
                   }
                   return [new Date(month.Month).getTime(), month.Total];
                 });
@@ -393,7 +400,9 @@
                     });
                     let totalDaily = response.map(month => {
                       if (typeof month.Total != 'number') {
-                        month.Total = Number(month.Total.replace(',',''));
+                        month.Total = Math.round(Number(month.Total.replace(',','')));
+                      } else {
+                        month.Total = Math.round(month.Total);
                       }
                       return [new Date(month.Day).getTime(), month.Total];
                     });

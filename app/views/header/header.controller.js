@@ -15,6 +15,7 @@
 
     vm.selection = function(db) {
       if (db == 'Master') {
+        alert('You are switching to the Master schedule, any changes made are final!')
         db = 'testDB';
       };
       let pkg = {

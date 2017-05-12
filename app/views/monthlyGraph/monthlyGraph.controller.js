@@ -41,13 +41,13 @@
           });
           let wells = response.map(month => {
             if (month.New_Wells != 0) {
-              month.New_Wells = Number(month.New_Wells);
+              month.New_Wells = Math.round(Number(month.New_Wells));
             }
             return month.New_Wells;
           });
           let pdp = response.map(month => {
             if (month.PDP != 0) {
-              month.PDP = Number(month.PDP);
+              month.PDP = Math.round(Number(month.PDP));
             }
             return month.PDP;
           });
@@ -55,7 +55,7 @@
             if (typeof month.Total != 'number') {
               month.Total = Number(month.Total);
             }
-            return month.Total;
+            return Math.round(month.Total);
           });
           vm.data = [pdp, wells, total];
           var myConfig = {
@@ -63,7 +63,7 @@
             "type":"line",
             "plotarea": {
               marginLeft: "dynamic",
-              marginRight: "dynamic"
+              marginRight: "10%"
             },
             "title":{
               "text":`${system} Monthly Water Forecast`,
@@ -73,8 +73,9 @@
               "text-align":"center",
             },
         	"legend": {
-          "layout":"x1",
-          "margin-top":"5%",
+          "layout":"1x3",
+          "align": "center",
+          "margin-top": "10%",
           "border-width":"0",
           "shadow":false,
           "marker":{
@@ -179,15 +180,15 @@
               });
               let pdp = response.map(month => {
                 if (month.PDP != 0) {
-                  month.PDP = Number(month.PDP);
+                  month.PDP = Math.round(Number(month.PDP));
                 }
                 return month.PDP;
               });
               let total = response.map(month => {
                 if (typeof month.Total != 'number') {
-                  month.Total = Number(month.Total);
+                  month.Total = Math.round(Number(month.Total));
                 }
-                return month.Total;
+                return Math.round(month.Total);
               });
               vm.dataDaily = [pdp, wells, total];
 
@@ -196,7 +197,7 @@
                 "type":"line",
                 "plotarea": {
                   marginLeft: "dynamic",
-                  marginRight: "dynamic"
+                  marginRight: "10%"
                 },
                 "title":{
                   "text":`${system} Daily Water Forecast`,
@@ -206,8 +207,9 @@
                   "text-align":"center",
                 },
             	"legend":{
-              "layout":"x1",
-              "margin-top":"5%",
+              "layout":"1x3",
+              "align": "center",
+              "margin-top": "10%",
               "border-width":"0",
               "shadow":false,
               "marker":{

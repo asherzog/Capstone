@@ -76,19 +76,21 @@
     }
 
     vm.bulkLoad = function() {
-      if (vm.bulk.bulkFile.$valid && vm.bulkFile) { //check if form is valid
-        let uploadObj = {
-          item: vm.type,
-          file: vm.bulkFile
-        };
-        return upload(uploadObj, `upload/wells`, true) //call upload function
-          .then((data) => {
-            console.log(data);
-            return data;
-          })
-          .then(() => {
-            $state.go('home');
-          });
+      if (confirm("Warning! Uploading in bulk will replace the current schedule. This cannot be undone, please make sure you are on the correct branch. Do you want to proceed?")) {
+        if (vm.bulk.bulkFile.$valid && vm.bulkFile) { //check if form is valid
+          let uploadObj = {
+            item: vm.type,
+            file: vm.bulkFile
+          };
+          return upload(uploadObj, `upload/wells`, true) //call upload function
+            .then((data) => {
+              console.log(data);
+              return data;
+            })
+            .then(() => {
+              $state.go('home');
+            });
+        }
       }
     };
 

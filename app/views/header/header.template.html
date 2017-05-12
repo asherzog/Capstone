@@ -40,6 +40,11 @@
               </button>
             </a>
           </div>
+          <div style="max-width: 20%">
+            <select class="form-control" id="dbs" ng-model="$ctrl.db" name="db" ng-change="$ctrl.selection($ctrl.db)">
+              <option ng-repeat="db in $ctrl.dbs">{{db}}</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

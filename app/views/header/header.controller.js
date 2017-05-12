@@ -5,11 +5,31 @@
     .module('app')
     .controller('headerController', headerController);
 
-  function headerController($http, $scope, HomeService, waterService) {
+  function headerController($http, $scope, HomeService, waterService, $state) {
     const vm = this;
     vm.$onInit = loadData;
     vm.systems = waterService.allSystems;
     vm.printing = HomeService.printing;
+    vm.db = 'Master';
+    vm.dbs = ['Master', 'Test'];
+
+    vm.selection = function(db) {
+      if (db == 'Master') {
+        db = 'testDB';
+      };
+      let pkg = {
+        db
+      };
+      $http.post('http://localhost:3000/setdb', pkg)
+        .then(result => {
+          console.log(result);
+          waterService.getAllSystems()
+            .then(response => {
+              waterService.allSystems = response;
+              $state.reload();
+            });
+        });
+    };
 
     $scope.$watch(function() {
       return waterService.allSystems;

@@ -26,7 +26,11 @@
           waterService.getAllSystems()
             .then(response => {
               waterService.allSystems = response;
-              $state.reload();
+              if ($state.current.name == 'home') {
+                $state.reload();
+              } else {
+                $state.go('home');
+              }
             });
         });
     };

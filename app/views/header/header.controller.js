@@ -26,10 +26,10 @@
           waterService.getAllSystems()
             .then(response => {
               waterService.allSystems = response;
-              if ($state.current.name == 'home') {
-                $state.reload();
+              if ($state.current.name == 'addform') {
+                $state.go('home');  
               } else {
-                $state.go('home');
+                $state.reload();
               }
             });
         });

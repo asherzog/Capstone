@@ -26,8 +26,8 @@
           waterService.getAllSystems()
             .then(response => {
               waterService.allSystems = response;
-              if ($state.current.name == 'addform') {
-                $state.go('home');  
+              if ($state.current.name == 'addForm') {
+                $state.go('home');
               } else {
                 $state.reload();
               }

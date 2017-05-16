@@ -56,9 +56,14 @@
       if (confirm(`Delete ${vm.tc}?`)) {
         console.log('deleted');
         let tc = vm.tc;
-        vm.tcs.indexOf(tc) != 0 ? vm.tc = vm.tcs[0] : vm.tc = vm.tcs[vm.tcs.length -1];
-        vm.selection(vm.tc);
-        vm.tcs.splice(vm.tcs.indexOf(tc),1);
+        console.log(tc);
+        // vm.tcs.indexOf(tc) != 0 ? vm.tc = vm.tcs[0] : vm.tc = vm.tcs[vm.tcs.length -1];
+        // vm.selection(vm.tc);
+        // vm.tcs.splice(vm.tcs.indexOf(tc),1);
+        $http.delete(`http:localhost:3000/tc/${tc}`)
+          .then(() => {
+            $state.reload();
+          });
       }
     };
 
